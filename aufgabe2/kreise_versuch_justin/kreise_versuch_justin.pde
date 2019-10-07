@@ -1,4 +1,4 @@
-size(180, 180);
+size(180, 130);
 int anzahlSpalten=7;
 int anzahlZeilen=5;
 ellipseMode(RADIUS);
