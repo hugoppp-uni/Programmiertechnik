@@ -9,3 +9,10 @@ Radien.
 Befehls ein Dreieck. Die Größe des Dreiecks
 soll durch eine Variable skalierung einstellbar
 sein. */
+
+size(1000,1000); 
+int scale = -100;
+
+line(500,500-scale, 500-scale, 500+scale);
+line(500,500-scale, 500+scale, 500+scale);
+line(500+scale, 500+scale, 500-scale, 500+scale);
