@@ -1,9 +1,9 @@
 // Debugger
 private final boolean TRACE_MODE = true;
 
-void trace(String ausgabe) {
+void trace(String output) {
   if (TRACE_MODE) {
-    println(ausgabe);
+    println(output);
   }
 }
 
@@ -24,15 +24,15 @@ void setup () {
  * n muss größer als 0 sein sonst Compiler-Fehler
  */
 
-int fibrec(int n) {
-  if (n<=0) {
+int fibrec(int number) {
+  if (number<=0 && number>=47) {
     throw new IllegalArgumentException("n muss >0 sein");
   }
 
-  if (n<=2) {
+  if (number<=2) {
     return 1;
   } else {
-    return fibrec(n-1)+fibrec(n-2);
+    return fibrec(number-1)+fibrec(number-2);
   }
 }
 
@@ -41,20 +41,20 @@ int fibrec(int n) {
 
 // Fibunacci iterativ
 
-int fibite(int n) {
+int fibite(int number) {
 
-int x =1;
-int y =1;
-int z =1;
+  int result1 =1;
+  int result2 =1;
+  int result3 =1;
 
-  if (n<=0) {
+  if (number<=0 && number>=47) {
     throw new IllegalArgumentException("n muss >0 sein");
   }
 
-  for (int i=0; i<(n-2); i++) {
-    z = x+y;
-    x = y;
-    y = z;
+  for (int counter=0; counter<(number-2); counter++) {
+    result3 = result1+result2;
+    result1 = result2;
+    result2 = result3;
   }
-  return z;
+  return result3;
 }
