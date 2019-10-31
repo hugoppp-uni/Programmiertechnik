@@ -1,5 +1,6 @@
-int[] laufzeit = new int[0];
-String[] titel = new String[0];
+int[] laufzeit = new int[4];
+String[] titel = new String[4];
+int anzahl = 0;
 
 void setup(){
 hinzufuegen(55,"Deutschstunde");
@@ -8,7 +9,7 @@ hinzufuegen(128, "Der König der Löwen");
 hinzufuegen(134,"Downton Abbey");
 hinzufuegen(73,"Ugly Dolls");
 sammlungAusgeben();
-println("\nGesammte Laufzeit in minuten: " + getLaufzeit());
+println("\nGesammte Laufzeit von " + anzahl + " Titeln in Stunden: " + getLaufzeit()/60);
 }
 
 
@@ -16,9 +17,11 @@ println("\nGesammte Laufzeit in minuten: " + getLaufzeit());
    **/
 void sammlungAusgeben(){
   for(int i = 0; i < titel.length; i++){
-    println("Titel: " + titel[i]);
-    println("Laufzeit: " + laufzeit[i]);
-    println("--------------");
+      if (laufzeit[i] > 0){
+      println("Titel: " + titel[i]);
+      println("Laufzeit: " + laufzeit[i] + " Minuten");
+      println("--------------");
+    }
   }
 }
 
@@ -29,19 +32,26 @@ void sammlungAusgeben(){
     */
 
 void hinzufuegen(int eingabeLaufzeit, String eingabeTitel){
-  if (laufzeit.length != titel.length){                            //Testet ob die Anzahl an Titel= Anz. an Laufzeiten
-    println("Error, Anzahl titel != Anzahl Laufzeit");
-  } else {
-    int[] laufzeitNeu = new int[laufzeit.length+1];                //Neues array mit länge +1 vom alten //<>//
-    System.arraycopy(laufzeit, 0, laufzeitNeu, 0, laufzeit.length);   //kopieren des alten ins neue 
-    laufzeitNeu[laufzeitNeu.length-1] = eingabeLaufzeit;              //Schreiben der Neuen Zeit
-    laufzeit = laufzeitNeu; 
-    
-    String[] titelNeu = new String[titel.length+1];
-    System.arraycopy(titel, 0, titelNeu, 0, titel.length);   //kopieren des alten ins neue 
-    titelNeu[titelNeu.length-1] = eingabeTitel;              //Schreiben der Neuen Zeit
-    titel = titelNeu;   
+  
+  //Testet ob die Anzahl an Titel = Anz. an Laufzeiten
+  if (laufzeit.length != titel.length){                           
+    throw new IllegalArgumentException("Error, Anzahl titel != Anzahl Laufzeit");
   }
+  
+  if (anzahl >= laufzeit.length){
+    int[] laufzeitNeu = new int[laufzeit.length*2];                //<>//
+    System.arraycopy(laufzeit, 0, laufzeitNeu, 0, laufzeit.length);   
+    laufzeit = laufzeitNeu;
+    
+    String[] titelNeu = new String[titel.length*2];
+    System.arraycopy(titel, 0, titelNeu, 0, titel.length);   //kopieren des alten ins neue 
+    titel = titelNeu;  
+  }
+  
+  laufzeit[anzahl] = eingabeLaufzeit;
+  titel[anzahl] = eingabeTitel;
+  
+  anzahl++;
 }
 
 
