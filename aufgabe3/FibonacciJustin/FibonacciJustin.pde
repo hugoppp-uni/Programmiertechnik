@@ -1,4 +1,3 @@
-// Debugger
 private final boolean TRACE_MODE = true;
 
 void trace(String output) {
@@ -7,26 +6,21 @@ void trace(String output) {
   }
 }
 
-
-void setup () {
-  println("Fibunacci rekursiv = " + fibrec(5));
-  println("Fibunacci iterativ = " + fibite(5));
-} 
-
-
-
-// Fibunacci rekursiv
-
 /**
- * Eingabe als integer
- * berechnet die n-te Fibunacci-Zahl rekursiv
- * Rückgabe als integer
- * n muss größer als 0 sein sonst Compiler-Fehler
+ * Fibunacci rekursiv
+ *  - berechnet die n-te Fibunacci-Zahl rekursiv
+ *  - Eingabe als integer, Rückgabe als integer
+ *  - n muss:
+ *     kleiner als 47 sein sonst Obergrenze von int erreicht
+ *     größer als 0 sein sonst Compiler-Fehler
  */
 
 int fibrec(int number) {
-  if (number<=0 && number>=47) {
+  if (number<=0) {
     throw new IllegalArgumentException("n muss >0 sein");
+  }
+  if (number>=47) {
+    throw new IllegalArgumentException("n muss >=47 sein");
   }
 
   if (number<=2) {
@@ -36,10 +30,14 @@ int fibrec(int number) {
   }
 }
 
-
-
-
-// Fibunacci iterativ
+/**
+ * Fibunacci iterativ
+ * berechnet die n-te Fibunacci-Zahl iterativ
+ * Eingabe als integer, Rückgabe als integer
+ * n muss:
+ * - kleiner als 47 sein sonst Obergrenze von int erreicht
+ * - größer als 0 sein sonst Compiler-Fehler
+ */
 
 int fibite(int number) {
 
@@ -50,6 +48,9 @@ int fibite(int number) {
   if (number<=0 && number>=47) {
     throw new IllegalArgumentException("n muss >0 sein");
   }
+  if (number>=47) {
+    throw new IllegalArgumentException("n muss >=47 sein");
+  }
 
   for (int counter=0; counter<(number-2); counter++) {
     result3 = result1+result2;
@@ -58,3 +59,12 @@ int fibite(int number) {
   }
   return result3;
 }
+
+/**
+ *gibt die Ergebnisse beider Prozeduren parallel auf der Konsole aus
+ */
+
+void setup () {
+  println("Fibunacci rekursiv = " + fibrec(5));
+  println("Fibunacci iterativ = " + fibite(5));
+} 
