@@ -1,10 +1,8 @@
-private final boolean TRACE_MODE = true;
+private final boolean TRACE_MODE =false;
 void setup(){
-  //int x = 3;
-  //println("Itter: " + berechneFibonacciZahlIter(x));
-  //println("Rekur: " + berechneFibonacciZahlRec(x));
- berechneFibonacciZahlIter(5);
- //berechneFibonacciZahlRec(5);
+  int x = 25;
+  println("Itter: " + berechneFibonacciZahlIter(x));
+  println("Rekur: " + berechneFibonacciZahlRec(x));
 }
 
 void trace(String ausgabe){
@@ -14,39 +12,58 @@ void trace(String ausgabe){
 }
 
 /* Berechnet die n'te Fibonacci Zahl itterativ
- * Rückgabe als Integer
- * n muss größer als 2 sein, sonst IllegalArgumentException
+ * Rückgabe als Long
+ * 1 < n < 93, sonst IllegalArgumentException
  */
 
-int berechneFibonacciZahlIter(int n){
-  if (n <= 2){
+long berechneFibonacciZahlIter(int n){
+  
+  //Fehlerausgabe, wenn n außerhalb erlaubten Bereich
+  if (n <= 1){
     throw new IllegalArgumentException("n muss großer 2 sein!");
+  }if (n >= 93){
+    throw new IllegalArgumentException("n muss kleiner 93 sein! (Overflow)");
   }
-  int result = 0;
-  int result1 = 0;
-  int result2 = 1;
+  
+  //initialisierung vom Ergebnis //<>//
+  long result = 0;
+  //"nullte" Ziffer aus der Fibo Reihe
+  long result1 = 0;
+  //erste Ziffer aus der Fibo Reihe
+  long result2 = 1;
+  
   for(int i = 1; i < n; i++){
-    trace("Die Prozedur berechnet gerade Fib(" + (i) + ")");
+    //Ergebniss aus den beiden Vorgängern errechnen
     result = result1 + result2;
+    //Vorgänger aktualisieren
     result1=result2;
     result2=result;
+    
+    trace("Die Prozedur berechnet gerade Fib(" + (i+1) + ") = " + result);
   }
   trace("Das Ergebis von Fibbonachi Itterativ von n = " + n + " ist: " + result);
   return result; 
-} //<>//
+}
 
 /* Berechnet die n'te Fibonacci Zahl rekursiv
- * Rückhabe als Integer
- * n muss größer als 0 sein, sonst IllegalArgumentException
+ * Rückhabe als Long
+ * 0 < n < 40, sonst IllegalArgumentException
  */
 
-int berechneFibonacciZahlRec(int n){
-  trace("Die Prozedur berechnet gerade Fib(" + n + ")"); //<>//
+long berechneFibonacciZahlRec(int n){
+  
+  trace("Die Prozedur berechnet gerade Fib(" + n + ")");
+  //Fehlerausgabe, wenn n außerhalb erlaubten Bereich
   if (n <= 0){
     throw new IllegalArgumentException("n muss großer 0 sein!");
+  }if (n >=40){
+    throw new IllegalArgumentException("n muss kleiner 40 sein (Performance)");
   }
+  
+  //Abbruchbedingung
   if (n <= 2){
     return 1;
   }
+  //rek. Selbstaufruf
   return berechneFibonacciZahlRec(n-1) + berechneFibonacciZahlRec(n-2);
 }
