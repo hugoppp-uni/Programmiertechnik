@@ -2,13 +2,22 @@
  *Initialisierung zweier Arrays:
  * -vom Typ String für die Liste der Filmtitel
  * -vom Typ int für die Liste der Filmlaufzeiten
+ */
+String[] title = new String[1];
+int[] runtime = new int[1];
+
+/**
  *Initialisierung der Variable "count" vom Typ int,
  *die dokumentiert, wie viele Einträge sich in der
  *Sammlung befinden
  */
-String[] title = new String[1];
-int[] runtime = new int[1];
 int count = 0;
+
+/**
+ *Initialisierung der globalen Variable allTestsApproved vom Typ 
+ *boolean für spätere Testprozeduren
+ */
+boolean allTestsApproved = true;
 
 /**
  *1. Hinzufügen der Einträge in die DVD-Sammlung durch addCollection()
@@ -121,4 +130,8 @@ int getTotalRuntime() {
     total += i;
   }
   return total;
+}
+
+void testString(String reference, String actual) {
+allTestsApproved = allTestsApproved && reference == actual;
 }
