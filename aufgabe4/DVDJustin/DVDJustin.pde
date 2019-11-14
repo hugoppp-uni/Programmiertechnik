@@ -41,6 +41,7 @@ void setup() {
 
   testAddCollection("Max Mustermann, der Film", 1337);
   testDoubleCollection();
+  testGetTotalRuntime();
 
   println("tested and approved: " + allTestsApproved);
 }
@@ -156,9 +157,9 @@ void testGetTotalRuntime() {
   int testTotal = 0;
   for (int i : runtime) {
     testTotal += i;
+    }
     if (!(getTotalRuntime() == testTotal
       && allTestsApproved)) {
         allTestsApproved = false;
-    }
-  }
+  } 
 }
