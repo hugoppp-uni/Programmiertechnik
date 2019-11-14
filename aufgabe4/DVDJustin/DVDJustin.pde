@@ -48,7 +48,7 @@ void setup() {
 /**
  *Prozedur zum Ausgeben der gesamten DVD-Sammlung
  *Keine Eingabe
- *Keine Ausgabe, lediglich ein Drucken der Arrays auf der Konsole
+ *Keine Ausgabe
  */
 void printCollection() {
   for (int i=0; i<count; i++) {
@@ -61,7 +61,7 @@ void printCollection() {
  *Prozedur zum Hinzufügen eines Eintrags in die DVD-Sammlung
  *Eingabe des Filmtitels als Typ String
  *Eingabe der Filmlaufzeit als Typ int
- *Keine Ausgabe, lediglich eine Veränderung der oben genannten Arrays
+ *Keine Ausgabe
  *Fehlermeldung bei Eingabe einer negativen oder =0 Laufzeit und bei leerem String
  *Fehlermeldung wenn Anzahl der Titel != Anzahl der Laufzeiten
  *Fehlermeldung wenn ein nicht referenzierter String übergeben wird
@@ -91,7 +91,7 @@ void addCollection(String inputTitle, int inputRuntime) {
 /**
  *Prozedur zum Verdoppeln der beiden Arrays runtime und title
  *keine Eingabe
- *keine Ausgabe, lediglich eine Veränderung der oben genannten Arrays
+ *keine Ausgabe
  */
 void doubleCollection() {
   String[] titleNew = new String[title.length*2];
@@ -121,7 +121,7 @@ int getTotalRuntime() {
 /**
  *Testet addCollection()
  *Eingabe String und int
- *Keine Ausgabe, void
+ *Keine Ausgabe
  */
 void testAddCollection(String referenceTitle, int referenceRuntime) {
   addCollection(referenceTitle, referenceRuntime);
@@ -135,7 +135,7 @@ void testAddCollection(String referenceTitle, int referenceRuntime) {
 /**
  *Testet doubleCollection()
  *Eingabe String und int
- *Keine Ausgabe, void
+ *Keine Ausgabe
  */
 void testDoubleCollection() {
   int testRuntimeLength = runtime.length;
@@ -150,7 +150,7 @@ void testDoubleCollection() {
 /**
  *Testet getTotalRuntime()
  *Keine Eingabe
- *Keine Ausgabe, void
+ *Keine Ausgabe
  */
 void testGetTotalRuntime() {
   int testTotal = 0;
