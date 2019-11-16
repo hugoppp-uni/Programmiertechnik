@@ -47,8 +47,6 @@ void setup() {
     testGetTotalRuntime();
 
     println("\ntested and approved: " + allTestsApproved);
-  } else {
-    println("\n! not tested yet");
   }
 }
 
