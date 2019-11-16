@@ -37,7 +37,7 @@ void setup() {
   addCollection("The Matrix", 150);
   addCollection("Saw", 103);
 
-  printCollection();
+    printCollection();
 
   println("\ntotal collection runtime: " + getTotalRuntime() + " min / ~" + getTotalRuntime()/60 + " hrs");
 
@@ -58,7 +58,7 @@ void setup() {
 void printCollection() {
   for (int i=0; i<count; i++) {
     println("-------------");
-    println(title[i] + ": " + runtime[i] + " min");
+    println(i+1 + " " + title[i] + ": " + runtime[i] + " min");
   }
 }
 
