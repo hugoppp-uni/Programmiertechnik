@@ -1,4 +1,6 @@
-/** //<>//
+private final boolean TRACE_MODE = false; //<>//
+
+/**
  *Initialisierung zweier Arrays:
  * -vom Typ String für die Liste der Filmtitel
  * -vom Typ int für die Liste der Filmlaufzeiten
@@ -39,11 +41,15 @@ void setup() {
 
   println("\ntotal collection runtime: " + getTotalRuntime() + " min / ~" + getTotalRuntime()/60 + " hrs");
 
-  testAddCollection("Max Mustermann, der Film", 1337);
-  testDoubleCollection();
-  testGetTotalRuntime();
+  if (TRACE_MODE) {
+    testAddCollection("Max Mustermann, der Film", 1337);
+    testDoubleCollection();
+    testGetTotalRuntime();
 
-  println("tested and approved: " + allTestsApproved);
+    println("\ntested and approved: " + allTestsApproved);
+  } else {
+    println("\n! not tested yet");
+  }
 }
 
 /**
@@ -157,9 +163,9 @@ void testGetTotalRuntime() {
   int testTotal = 0;
   for (int i : runtime) {
     testTotal += i;
-    }
-    if (!(getTotalRuntime() == testTotal
-      && allTestsApproved)) {
-        allTestsApproved = false;
-  } 
+  }
+  if (!(getTotalRuntime() == testTotal
+    && allTestsApproved)) {
+    allTestsApproved = false;
+  }
 }
