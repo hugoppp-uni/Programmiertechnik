@@ -37,7 +37,9 @@ void setup() {
   addCollection("The Matrix", 150);
   addCollection("Saw", 103);
 
-    printCollection();
+  removeCollection(7);
+
+  printCollection();
 
   println("\ntotal collection runtime: " + getTotalRuntime() + " min / ~" + getTotalRuntime()/60 + " hrs");
 
@@ -68,7 +70,7 @@ void printCollection() {
  *Eingabe der Filmlaufzeit als Typ int
  *Keine Ausgabe
  *Fehlermeldung bei Eingabe einer negativen oder =0 Laufzeit und bei leerem String
- *Fehlermeldung wenn Anzahl der Titel != Anzahl der Laufzeiten
+ *Fehlermeldung wenn Länge von title != Länge von runtime
  *Fehlermeldung wenn ein nicht referenzierter String übergeben wird
  */
 void addCollection(String inputTitle, int inputRuntime) {
@@ -166,4 +168,47 @@ void testGetTotalRuntime() {
     && allTestsApproved)) {
     allTestsApproved = false;
   }
+}
+
+/**
+ *Prozedur zum Entfernen eines Eintrags in die DVD-Sammlung
+ *Eingabe als int
+ *Keine Ausgabe
+ *Fehlermeldung bei Eingabe einer negativen oder =0 Zahl
+ *Fehlermeldung wenn Anzahl der Titel != Anzahl der Laufzeiten
+ *Fehlermeldung wenn eingegebener Index nicht als Eintrag existiert
+ */
+void removeCollection(int index) {
+  
+  // Fehlermeldungen
+  if (index <= 0) {
+    throw new IllegalArgumentException("invalid input");
+  }
+  if (title.length != runtime.length) {
+    throw new IllegalArgumentException("missing movie information");
+  }
+  if (index > runtime.length | index > title.length) {
+    throw new IllegalArgumentException("entry not found");
+  }
+ 
+  int[] runtimeNew = new int[runtime.length-1];
+  String[] titleNew = new String[title.length-1];
+
+  for (int i = 0; i<index-1; i++) {
+    runtimeNew[i] = runtime[i];
+  }
+  for (int i = index; i<runtime.length; i++) {
+    runtimeNew[i-1] = runtime[i];
+  }
+
+  for (int i = 0; i<index-1; i++) {
+    titleNew[i] = title[i];
+  }
+  for (int i = index; i<title.length; i++) {
+    titleNew[i-1] = title[i];
+  }
+
+  runtime = runtimeNew;
+  title = titleNew;
+  count--;
 }
