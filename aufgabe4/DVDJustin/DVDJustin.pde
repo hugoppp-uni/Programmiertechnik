@@ -37,7 +37,7 @@ void setup() {
   addCollection("The Matrix", 150);
   addCollection("Saw", 103);
 
-  removeCollection(7);
+  removeCollection(3);
 
   printCollection();
 
@@ -196,15 +196,10 @@ void removeCollection(int index) {
 
   for (int i = 0; i<index-1; i++) {
     runtimeNew[i] = runtime[i];
+    titleNew[i] = title[i];
   }
   for (int i = index; i<runtime.length; i++) {
     runtimeNew[i-1] = runtime[i];
-  }
-
-  for (int i = 0; i<index-1; i++) {
-    titleNew[i] = title[i];
-  }
-  for (int i = index; i<title.length; i++) {
     titleNew[i-1] = title[i];
   }
 
