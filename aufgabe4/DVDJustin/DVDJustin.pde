@@ -1,11 +1,15 @@
-private final boolean TRACE_MODE = false; //<>//
+private final boolean TRACE_MODE = true; //<>// //<>//
 
 /**
- *Initialisierung zweier Arrays:
- * -vom Typ String für die Liste der Filmtitel
- * -vom Typ int für die Liste der Filmlaufzeiten
+ *Deklaration und Initialisierung eines Arrays
+ *vom Typ String für die Liste der Filmtitel
  */
 String[] title = new String[1];
+
+/**
+ *Deklaration und Initialisierung eines Arrays
+ *vom Typ int für die Liste der Filmlaufzeiten
+ */
 int[] runtime = new int[1];
 
 /**
@@ -21,33 +25,24 @@ int count = 0;
  */
 boolean allTestsApproved = true;
 
-/**
- *addCollection(): Hinzufügen der Einträge in die DVD-Sammlung
- *printCollection(): Ausgeben der DVD-Sammlung
- *println(getTotalRuntime()): Ausgeben der Gesamtlaufzeit der DVD-Sammlung
- *testAddCollection(): Testprozedur von addCollection()
- */
 void setup() {
-  addCollection("Der Herr der Ringe: Die Rückkehr des Königs", 200);
-  addCollection("Good Will Hunting", 126);
-  addCollection("The Dark Knight", 152);
-  addCollection("The Shawshank Redemption", 142);
-  addCollection("Pulp Fiction", 178);
-  addCollection("Fight Club", 151);
-  addCollection("The Matrix", 150);
-  addCollection("Saw", 103);
-
-  removeCollection(3);
-
+  addToCollection("Der Herr der Ringe: Die Rückkehr des Königs", 200);
+  addToCollection("Good Will Hunting", 126);
+  addToCollection("The Dark Knight", 152);
+  addToCollection("The Shawshank Redemption", 142);
+  addToCollection("Pulp Fiction", 178);
+  addToCollection("Fight Club", 151);
+  addToCollection("The Matrix", 150);
+  addToCollection("Saw", 103);
+  
   printCollection();
-
+  
   println("\ntotal collection runtime: " + getTotalRuntime() + " min / ~" + getTotalRuntime()/60 + " hrs");
+  
+  println("runtime = " + getRuntime("Saw"));
 
   if (TRACE_MODE) {
-    testAddCollection("Max Mustermann, der Film", 1337);
-    testDoubleCollection();
-    testGetTotalRuntime();
-
+    testCollection();
     println("\ntested and approved: " + allTestsApproved);
   }
 }
@@ -73,7 +68,7 @@ void printCollection() {
  *Fehlermeldung wenn Länge von title != Länge von runtime
  *Fehlermeldung wenn ein nicht referenzierter String übergeben wird
  */
-void addCollection(String inputTitle, int inputRuntime) {
+void addToCollection(String inputTitle, int inputRuntime) {
 
   // Fehlermeldungen
   if (inputRuntime <= 0 | inputTitle.equals("")) {
@@ -126,17 +121,41 @@ int getTotalRuntime() {
 // Testprozeduren
 
 /**
- *Testet addCollection()
+ *Testet addToCollection()
  *Eingabe String und int
  *Keine Ausgabe
  */
-void testAddCollection(String referenceTitle, int referenceRuntime) {
-  addCollection(referenceTitle, referenceRuntime);
-  if (!(referenceTitle.equals(title[count-1])
-    && referenceRuntime == runtime[count-1]
-    && allTestsApproved)) {
-    allTestsApproved = false;
-  }
+void testCollection() {
+
+  // Neue leere Sammlung
+  title = new String[1];
+  runtime = new int[1];
+  count = 0;
+  // Test: eine DVD einfügen
+  addToCollection("Moin Moin", 69);
+  allTestsApproved = "Moin Moin".equals(title[count-1])
+    && 69 == runtime[count-1]
+    && allTestsApproved;
+
+  // Test: Einfügen mit Verdoppeln
+  addToCollection("Moin Moin der zweite", 92);
+  allTestsApproved = "Moin Moin der zweite".equals(title[count-1])
+    && 92 == runtime[count-1]
+    && allTestsApproved; 
+
+  // Test: n'te DVD
+  addToCollection("Moin Moin der dritte", 93);
+  addToCollection("Moin Moin der vierte", 94);
+  addToCollection("Moin Moin der fünfte", 95);
+  addToCollection("Moin Moin der sechste", 96);
+  allTestsApproved = "Moin Moin der sechste".equals(title[count-1])
+    && 96 == runtime[count-1]
+    && allTestsApproved;
+    
+  // Teste Runtime
+  allTestsApproved = 539 == getTotalRuntime()
+    && allTestsApproved;
+   
 }
 
 /**
@@ -155,22 +174,6 @@ void testDoubleCollection() {
 }
 
 /**
- *Testet getTotalRuntime()
- *Keine Eingabe
- *Keine Ausgabe
- */
-void testGetTotalRuntime() {
-  int testTotal = 0;
-  for (int i : runtime) {
-    testTotal += i;
-  }
-  if (!(getTotalRuntime() == testTotal
-    && allTestsApproved)) {
-    allTestsApproved = false;
-  }
-}
-
-/**
  *Prozedur zum Entfernen eines Eintrags in die DVD-Sammlung
  *Eingabe als int
  *Keine Ausgabe
@@ -178,8 +181,8 @@ void testGetTotalRuntime() {
  *Fehlermeldung wenn Anzahl der Titel != Anzahl der Laufzeiten
  *Fehlermeldung wenn eingegebener Index nicht als Eintrag existiert
  */
-void removeCollection(int index) {
-  
+void removeFromCollection(int index) {
+
   // Fehlermeldungen
   if (index <= 0) {
     throw new IllegalArgumentException("invalid input");
@@ -190,7 +193,7 @@ void removeCollection(int index) {
   if (index > runtime.length | index > title.length) {
     throw new IllegalArgumentException("entry not found");
   }
- 
+
   int[] runtimeNew = new int[runtime.length-1];
   String[] titleNew = new String[title.length-1];
 
@@ -206,4 +209,19 @@ void removeCollection(int index) {
   runtime = runtimeNew;
   title = titleNew;
   count--;
+}
+
+/**
+ *Prozedur zur Ausgabe der Laufzeit eines Titels
+ *Eingabe Titel als String
+ *Ausgabe der Laufzeit als int
+ *Fehlermeldung falls so ein Titel nicht vorhanden
+ */
+int getRuntime(String inputTitle) {
+  for (int i = 0; i < count; i++) {
+    if (title[i].equals(inputTitle)) {
+      return runtime[i];
+    }
+  }
+  throw new IllegalArgumentException(inputTitle + " not found");
 }
