@@ -12,4 +12,7 @@ public class Wagen {
     Wagen(String id) {
         this.id = id;
     }
+    public String getId(Wagen wagen){
+        return wagen.id;
+    }
 }

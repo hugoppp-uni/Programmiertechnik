@@ -7,5 +7,8 @@ public class main {
         zug.anhaengen(new Wagen("Wagen2"));
         zug.anhaengen(new Wagen("Wagen3"));
         zug.anhaengen(new Wagen("Wagen4"));
+        zug.anhaengen(new Wagen("Wagen5"));
+        zug.abhaengen(zug.findeWagenObjektMitId("Wagen1"));
+        zug.abhaengen(zug.findeWagenObjektMitId("Wagen3"));
     }
 }

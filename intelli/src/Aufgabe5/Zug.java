@@ -18,7 +18,7 @@ public class Zug {
             ersterWagen = neuerWagen;
         } else {
             //sonst wird an den letzten Wagen der neue rangehängt
-            Wagen letzerWagen = findeVorgängerVon(null);
+            Wagen letzerWagen = findeVorgaengerVon(null);
             letzerWagen.naechsterWagen = neuerWagen;
         }
     }
@@ -39,7 +39,7 @@ public class Zug {
         } else {
             //2. Fall: irgendein anderen Wagen abhängen;
             //z.B Zug-gesuchterWagen-wagenZuEntfernen-wagen3
-            Wagen gesuchterWagen = findeVorgängerVon(wagen);
+            Wagen gesuchterWagen = findeVorgaengerVon(wagen);
             Wagen wagenZuEnfernen = gesuchterWagen.naechsterWagen;
             gesuchterWagen.naechsterWagen = wagenZuEnfernen.naechsterWagen;
         }
@@ -50,9 +50,25 @@ public class Zug {
      * @param wagen nächsterWagen des gesuchten Wagens
      * @return der Wagen, der vor dem eingegebenen Wagen hägt, zB: Zug-Wagen1-Ausgabe-Eingabe-Wagen4
      */
-    private Wagen findeVorgängerVon(Wagen wagen) {
+    private Wagen findeVorgaengerVon(Wagen wagen) {
         Wagen aktuellerWagen = ersterWagen;
         while (aktuellerWagen.naechsterWagen != wagen) {
+            aktuellerWagen = aktuellerWagen.naechsterWagen;
+        }
+        return aktuellerWagen;
+    }
+
+    /**
+     * Gibt den ersten Wagen mit der gesuchten id aus. IllegalArgumentException, falls die id nicht ex.
+     * @param id Id des gesuchten Wagens
+     * @return Wagen Objekt mit der gesuchten ID
+     */
+    public Wagen findeWagenObjektMitId(String id){
+        Wagen aktuellerWagen = ersterWagen;
+        while (!aktuellerWagen.getId(aktuellerWagen).equalsIgnoreCase(id)){
+            if (aktuellerWagen.naechsterWagen == null) {
+                throw new IllegalArgumentException("kein Wagen mit dieser ID gefunden");
+            }
             aktuellerWagen = aktuellerWagen.naechsterWagen;
         }
         return aktuellerWagen;
