@@ -1,6 +1,5 @@
 package Aufgabe5;
 
-public class main {
-    Zug zug = new Zug();
+public static void main(String[]args){
 
 }
