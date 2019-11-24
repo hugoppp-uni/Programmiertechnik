@@ -9,8 +9,7 @@ public class Zug {
 
     /**
      * Hängt einen Wagen an den letzen Wagen des Zuges an, falls es keinen Wageb gibt, an den Zug.
-     *
-     * @param neuerWagen wird ans Ende angehängt
+     * @param neuerWagen der anzuhängende Wagen
      */
     public void anhaengen(Wagen neuerWagen) {
         //Falls noch kein Wagen da ist, wird einer an den Zug gehängt
@@ -25,35 +24,51 @@ public class Zug {
 
     /**
      * Hängt einen bestimmten Wagen ab, der Wagen davor (bzw. Zug) und Wagen danach werden verbunden:
-     * Zug-Wagen1-Eingabe-Wagen3  -->> Zug-Wagen1-Wagen3
+     * zug-wagen1-*wagen*-wagen3  -> zug-wagen1-wagen3
      *
      * @param wagen wird abgehägt
      */
     public void abhaengen(Wagen wagen) {
-        //1. Fall: ersten Wagen abhängen
         if (ersterWagen == wagen) {
+            //1. Fall: ersten Wagen abhängen
             Wagen wagenZuEntfernen = ersterWagen;
+            //der Wagen, der hinter dem wagenZuEnfernen ist, wird an den Zug gehängt
             ersterWagen = wagenZuEntfernen.naechsterWagen;
+            //naechsterWagen vom wagenZuEnfernen wird enfernt, da dieser keinen Nachfolger mehr hat
             wagenZuEntfernen.naechsterWagen = null;
             
         } else {
-            //2. Fall: irgendein anderen Wagen abhängen;
-            //z.B Zug-gesuchterWagen-wagenZuEntfernen-wagen3
-            Wagen gesuchterWagen = findeVorgaengerVon(wagen);
-            Wagen wagenZuEnfernen = gesuchterWagen.naechsterWagen;
-            gesuchterWagen.naechsterWagen = wagenZuEnfernen.naechsterWagen;
+            //2. Fall: irgendein anderen Wagen abhängen
+            Wagen vorgaengerWagen = findeVorgaengerVon(wagen);
+            Wagen wagenZuEntfernen = vorgaengerWagen.naechsterWagen;
+            //der Wagen, der hinter dem wagenZuEnfernen ist, wird an den Zug gehängt
+            vorgaengerWagen.naechsterWagen = wagenZuEntfernen.naechsterWagen;
+            //naechsterWagen vom wagenZuEnfernen wird enfernt, da dieser keinen Nachfolger mehr hat
+            wagenZuEntfernen.naechsterWagen = null;
         }
 
     }
     
     /**
+     * gibt den Wagen aus, der vor dem eingegebenen Wagen hägt, zB: zug-wagen1-*rückgabe*-*wagen*-wagen4
+     * IllegalArgumentException, falls:
+     *   1. der gesuchte Wagen hängt nicht am Zug
+     *   2. der gesuchte Wagen ist der erste Wagen des Zuges, hängt also an dem Zug
      * @param wagen nächsterWagen des gesuchten Wagens
-     * @return der Wagen, der vor dem eingegebenen Wagen hägt, zB: Zug-Wagen1-Ausgabe-Eingabe-Wagen4
+     * @return der gesuchte Wagen
      */
     private Wagen findeVorgaengerVon(Wagen wagen) {
+        if (ersterWagen == wagen){
+            throw new IllegalArgumentException("Der Wagen mit der id = " + wagen.getId() + " ist am Zug angehängt");
+        }
         Wagen aktuellerWagen = ersterWagen;
+        //Solange aktuellerWagen nicht der gesuchte Wagen ist, wird der nachfolger in aktuellerWagen gespeichert
         while (aktuellerWagen.naechsterWagen != wagen) {
             aktuellerWagen = aktuellerWagen.naechsterWagen;
+            //IllegalArgumentException, falls der Wagen nicht am Zug hängt
+            if (aktuellerWagen == null){
+                throw new IllegalArgumentException("der Wagen mit id = " + wagen.getId() + " hängt nicht an diesem Zug");
+            }
         }
         return aktuellerWagen;
     }
@@ -65,12 +80,16 @@ public class Zug {
      */
     public Wagen findeWagenObjektMitId(String id){
         Wagen aktuellerWagen = ersterWagen;
-        while (!aktuellerWagen.getId(aktuellerWagen).equalsIgnoreCase(id)){
+        while (!aktuellerWagen.getId().equalsIgnoreCase(id)){
             if (aktuellerWagen.naechsterWagen == null) {
                 throw new IllegalArgumentException("kein Wagen mit dieser ID gefunden");
             }
             aktuellerWagen = aktuellerWagen.naechsterWagen;
         }
         return aktuellerWagen;
+    }
+
+    public Wagen getErsterWagen(){
+        return ersterWagen;
     }
 }
