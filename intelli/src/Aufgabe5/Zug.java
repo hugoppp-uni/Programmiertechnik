@@ -29,6 +29,9 @@ public class Zug {
      * @param wagen wird abgehägt
      */
     public void abhaengen(Wagen wagen) {
+        if (wagen == null){
+            throw new IllegalArgumentException("Kann nicht null sein");
+        }
         if (ersterWagen == wagen) {
             //1. Fall: ersten Wagen abhängen
             Wagen wagenZuEntfernen = ersterWagen;
