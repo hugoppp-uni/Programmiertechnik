@@ -70,7 +70,7 @@ public class Zug {
             aktuellerWagen = aktuellerWagen.naechsterWagen;
             //IllegalArgumentException, falls der Wagen nicht am Zug hängt
             if (aktuellerWagen == null){
-                throw new IllegalArgumentException("der Wagen mit id = " + wagen.getId() + " hängt nicht an diesem Zug");
+                throw new IllegalArgumentException("Wagen mit id = " + wagen.getId() + " hängt nicht an diesem Zug");
             }
         }
         return aktuellerWagen;
