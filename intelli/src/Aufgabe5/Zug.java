@@ -13,6 +13,14 @@ public class Zug {
      */
     public void anhaengen(Wagen neuerWagen) {
         //Falls noch kein Wagen da ist, wird einer an den Zug gehängt
+        Wagen aktuellerWagen = ersterWagen;
+        //Schleife geht durch Zug, falls der neuerWagen schon am Zug hängt -> IllegalArgumentException
+        while ( aktuellerWagen.naechsterWagen != null) {
+            if (aktuellerWagen == neuerWagen) {
+            throw new IllegalArgumentException("Wagen hängt bereits am Zug");
+            }
+            aktuellerWagen = aktuellerWagen.naechsterWagen;
+        }
         if (ersterWagen == null) {
             ersterWagen = neuerWagen;
         } else {
@@ -96,3 +104,4 @@ public class Zug {
         return ersterWagen;
     }
 }
+
