@@ -8,11 +8,10 @@ public class Zug {
     private Wagen ersterWagen = null;
 
     /**
-     * Hängt einen Wagen an den letzen Wagen des Zuges an, falls es keinen Wageb gibt, an den Zug.
+     * Hängt einen Wagen an den letzen Wagen des Zuges an, falls es keinen Wagen gibt, an den Zug.
      * @param neuerWagen der anzuhängende Wagen
      */
     public void anhaengen(Wagen neuerWagen) {
-        //Falls noch kein Wagen da ist, wird einer an den Zug gehängt
         Wagen aktuellerWagen = ersterWagen;
         //Schleife geht durch Zug, falls der neuerWagen schon am Zug hängt -> IllegalArgumentException
         while ( aktuellerWagen.naechsterWagen != null) {
@@ -22,6 +21,7 @@ public class Zug {
             aktuellerWagen = aktuellerWagen.naechsterWagen;
         }
         if (ersterWagen == null) {
+            //Falls noch kein Wagen da ist, wird einer an den Zug gehängt
             ersterWagen = neuerWagen;
         } else {
             //sonst wird an den letzten Wagen der neue rangehängt
