@@ -24,10 +24,16 @@ public class Zug {
           if (aktuellerWagen == neuerWagen) {
               throw new IllegalArgumentException("Wagen hängt bereits am Zug");
           }
+          if (aktuellerWagen.getId() == neuerWagen.getId()){
+            //Falls am Zug ein Wagen hängt mit der gleichen Id wie die Id vom Neuen Wagen -> IllegalArgumentException
+            //FIXME dirty hack, es können immer noch zwei Wange-Objekte mit der selben Id erstellt werden.
+              throw new IllegalArgumentException("Es hängt bereits ein Wagen mit der gleichen ID am Zug");
+          }
           aktuellerWagen = aktuellerWagen.naechsterWagen;
       }
       //sonst wird an den letzten Wagen der neue rangehängt
-      Wagen letzerWagen = findeVorgaengerVon(null);
+      Wagen letzerWagen = aktuellerWagen;
+      //alter Code: Wagen letzerWagen = findeVorgaengerVon(null);
       letzerWagen.naechsterWagen = neuerWagen;
     }
   }
@@ -87,8 +93,7 @@ public class Zug {
   }
 
   /**
-   * Gibt den ersten Wagen mit der gesuchten id aus. IllegalArgumentException, falls die id nicht ex.
-   *
+   * Gibt den ersten Wagen mit der gesuchten id aus. IllegalArgumentException, falls die id nicht existiert
    * @param id Id des gesuchten Wagens
    * @return Wagen Objekt mit der gesuchten ID
    */
