@@ -53,4 +53,11 @@ public class testeZug {
         assertEquals(zug.getErsterWagen(),wagen3);
         assertNull(wagen3.naechsterWagen);
     }
+    @Test
+    public void testeFindeVorgaengerVon(){
+      Zug zug = new Zug();
+      Wagen wagen1 = new Wagen("zuTesten");
+      zug.anhaengen(wagen1);
+      assertSame(zug.findeWagenObjektMitId("zutesten"),wagen1);
+    }
 }
