@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class testeZug {
   @Test
-  public void testeHinzufügen() {
+  public void testeHinzufuegen() {
     Zug zug = new Zug();
     //testet ob der Zug am Anfang keine Wagen hat
     assertNull(zug.getErsterWagen());
