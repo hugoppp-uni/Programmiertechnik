@@ -12,9 +12,10 @@ public class Wagen {
     private String id;
 
     Wagen(String id) {
-        this.id = id;
+        this.id = id.toLowerCase();
     }
-    public String getId(){
+
+    public String getId() {
         return id;
     }
 }
