@@ -1,5 +1,6 @@
 package Aufgabe5;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -69,6 +70,7 @@ public class testeZug {
     Wagen wagen1 = new Wagen("zuTesten");
     Wagen wagen2 = new Wagen("zuTesten2");
     //TODO testen, ob die Exception geworfen wird, wenn der Wagen nicht am Zug hängt
+    //Assertions.assertThrows(IllegalArgumentException.class, () -> {zug.findeWagenObjektMitId("test");});
     zug.anhaengen(wagen1);
     zug.anhaengen(wagen2);
     //testet, ob der erste Wagen gefunden wird (ignore Case wird mitgetestet)
