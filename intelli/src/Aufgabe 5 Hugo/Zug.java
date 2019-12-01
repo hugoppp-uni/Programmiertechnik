@@ -26,7 +26,6 @@ public class Zug {
         }
         if (aktuellerWagen.getId().equals(neuerWagen.getId())) {
           //Falls am Zug ein Wagen hängt mit der gleichen Id wie die Id vom Neuen Wagen -> IllegalArgumentException
-          //FIXME dirty hack, es können immer noch zwei Wange-Objekte mit der selben Id erstellt werden.
           throw new IllegalArgumentException("Es hängt bereits ein Wagen mit der gleichen ID am Zug");
         }
         aktuellerWagen = aktuellerWagen.naechsterWagen;
