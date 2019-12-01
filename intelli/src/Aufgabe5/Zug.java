@@ -14,6 +14,9 @@ public class Zug {
    */
   public void anhaengen(Wagen neuerWagen) {
     Wagen aktuellerWagen = ersterWagen;
+    if (neuerWagen == null){
+      throw new IllegalArgumentException("kann nicht null sein");
+    }
     if (ersterWagen == null) {
       //Falls noch kein Wagen da ist, wird einer an den Zug gehängt
       ersterWagen = neuerWagen;
@@ -23,11 +26,6 @@ public class Zug {
         //Falls der neuerWagen schon am Zug hängt -> IllegalArgumentException
         if (aktuellerWagen == neuerWagen) {
           throw new IllegalArgumentException("Wagen hängt bereits am Zug");
-        }
-        if (aktuellerWagen.getId().equals(neuerWagen.getId())) {
-          //Falls am Zug ein Wagen hängt mit der gleichen Id wie die Id vom Neuen Wagen -> IllegalArgumentException
-          //FIXME dirty hack, es können immer noch zwei Wange-Objekte mit der selben Id erstellt werden.
-          throw new IllegalArgumentException("Es hängt bereits ein Wagen mit der gleichen ID am Zug");
         }
         aktuellerWagen = aktuellerWagen.naechsterWagen;
       }
@@ -55,7 +53,6 @@ public class Zug {
       ersterWagen = wagenZuEntfernen.naechsterWagen;
       //naechsterWagen vom wagenZuEnfernen wird enfernt, da dieser keinen Nachfolger mehr hat
       wagenZuEntfernen.naechsterWagen = null;
-
     } else {
       //2. Fall: irgendein anderen Wagen abhängen
       Wagen vorgaengerWagen = findeVorgaengerVon(wagen);

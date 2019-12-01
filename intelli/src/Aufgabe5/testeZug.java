@@ -77,6 +77,5 @@ public class testeZug {
     assertSame(zug.findeWagenObjektMitId("zutesten"), wagen1);
     //testet, ob der zweite Wagen gefunden wird (ignore Case wird mitgetestet)
     assertSame(zug.findeWagenObjektMitId("zuTesten2"), wagen2);
-    //TODO testet, ob Exception geworfen wird, wenn der Wagen nicht existiert
   }
 }
