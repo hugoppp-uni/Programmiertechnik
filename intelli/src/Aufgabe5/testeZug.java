@@ -69,7 +69,6 @@ public class testeZug {
     Zug zug = new Zug();
     Wagen wagen1 = new Wagen("zuTesten");
     Wagen wagen2 = new Wagen("zuTesten2");
-    //TODO testen, ob die Exception geworfen wird, wenn der Wagen nicht am Zug hängt
     //Assertions.assertThrows(IllegalArgumentException.class, () -> {zug.findeWagenObjektMitId("test");});
     zug.anhaengen(wagen1);
     zug.anhaengen(wagen2);
@@ -77,6 +76,5 @@ public class testeZug {
     assertSame(zug.findeWagenObjektMitId("zutesten"), wagen1);
     //testet, ob der zweite Wagen gefunden wird (ignore Case wird mitgetestet)
     assertSame(zug.findeWagenObjektMitId("zuTesten2"), wagen2);
-    //TODO testet, ob Exception geworfen wird, wenn der Wagen nicht existiert
   }
 }
