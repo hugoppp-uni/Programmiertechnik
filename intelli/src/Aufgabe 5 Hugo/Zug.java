@@ -14,6 +14,9 @@ public class Zug {
    */
   public void anhaengen(Wagen neuerWagen) {
     Wagen aktuellerWagen = ersterWagen;
+    if (neuerWagen == null){
+      throw new IllegalArgumentException("kann nicht null sein");
+    }
     if (ersterWagen == null) {
       //Falls noch kein Wagen da ist, wird einer an den Zug gehängt
       ersterWagen = neuerWagen;
@@ -24,10 +27,13 @@ public class Zug {
         if (aktuellerWagen == neuerWagen) {
           throw new IllegalArgumentException("Wagen hängt bereits am Zug");
         }
+<<<<<<< HEAD:intelli/src/Aufgabe 5 Hugo/Zug.java
         if (aktuellerWagen.getId().equals(neuerWagen.getId())) {
           //Falls am Zug ein Wagen hängt mit der gleichen Id wie die Id vom Neuen Wagen -> IllegalArgumentException
           throw new IllegalArgumentException("Es hängt bereits ein Wagen mit der gleichen ID am Zug");
         }
+=======
+>>>>>>> neu:intelli/src/Aufgabe5/Zug.java
         aktuellerWagen = aktuellerWagen.naechsterWagen;
       }
       //sonst wird an den letzten Wagen der neue rangehängt
@@ -54,7 +60,6 @@ public class Zug {
       ersterWagen = wagenZuEntfernen.naechsterWagen;
       //naechsterWagen vom wagenZuEnfernen wird enfernt, da dieser keinen Nachfolger mehr hat
       wagenZuEntfernen.naechsterWagen = null;
-
     } else {
       //2. Fall: irgendein anderen Wagen abhängen
       Wagen vorgaengerWagen = findeVorgaengerVon(wagen);

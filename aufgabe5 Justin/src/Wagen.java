@@ -3,7 +3,11 @@ public class Wagen {
     private Wagen nachfolgerWagen;
 
     /**
+<<<<<<< HEAD
      * @param id
+=======
+     *      * @param id
+>>>>>>> neu
      */
     public Wagen(String id) {
         this.id = id;
