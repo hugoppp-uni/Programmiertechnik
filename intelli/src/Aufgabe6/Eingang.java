@@ -1,5 +1,7 @@
 package Aufgabe6;
 
+import Aufgabe5.Wagen;
+
 public class Eingang implements Gatter {
     private boolean wert;
 
