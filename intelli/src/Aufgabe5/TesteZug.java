@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class testeZug {
+public class TesteZug {
   @Test
   public void testeHinzufuegen() {
     Zug zug = new Zug();
@@ -76,5 +76,17 @@ public class testeZug {
     assertSame(zug.findeWagenObjektMitId("zutesten"), wagen1);
     //testet, ob der zweite Wagen gefunden wird (ignore Case wird mitgetestet)
     assertSame(zug.findeWagenObjektMitId("zuTesten2"), wagen2);
+  }
+  @Test
+  public void testeAbhaengenLetzer(){
+    Zug zug = new Zug();
+    Wagen wagen1 = new Wagen("zuTesten");
+    Wagen wagen2 = new Wagen("zuTesten2");
+    zug.anhaengen(wagen1);
+    zug.anhaengen(wagen2);
+    zug.abhaengenLetzter();
+    assertNull(wagen1.naechsterWagen);
+    zug.abhaengenLetzter();
+    assertNull(zug.getErsterWagen());
   }
 }
