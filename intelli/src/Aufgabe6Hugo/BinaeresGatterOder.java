@@ -1,4 +1,4 @@
-package Aufgabe6;
+package Aufgabe6Hugo;
 
 public class BinaeresGatterOder {
 }

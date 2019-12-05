@@ -1,4 +1,4 @@
-package Aufgabe6;
+package Aufgabe6Hugo;
 
 public class BinaeresGatter {
     private  Gatter[] gatter = new Gatter[2];
