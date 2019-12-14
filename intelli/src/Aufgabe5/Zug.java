@@ -1,5 +1,9 @@
 package Aufgabe5;
 
+/**
+ * Zug besitzt Referenz auf den ersten Wagen
+ * Zug bietet die Schnittstelle zum konfigurieren des Zuges
+ */
 public class Zug {
   /**
    * Referenz auf den ersten Wagen des Zuges
@@ -14,26 +18,25 @@ public class Zug {
    */
   public void anhaengen(Wagen neuerWagen) {
     Wagen aktuellerWagen = ersterWagen;
+    if (neuerWagen == null) {
+      throw new IllegalArgumentException("Parameter von anhaengen() kann nicht null sein");
+    }
     if (ersterWagen == null) {
       //Falls noch kein Wagen da ist, wird einer an den Zug gehängt
       ersterWagen = neuerWagen;
     } else {
-      while (aktuellerWagen.naechsterWagen != null) {
+      while (aktuellerWagen.getNaechsterWagen() != null) {
         //Schleife geht durch Zug und findet letzen Wagen,
         //Falls der neuerWagen schon am Zug hängt -> IllegalArgumentException
         if (aktuellerWagen == neuerWagen) {
           throw new IllegalArgumentException("Wagen hängt bereits am Zug");
         }
-        if (aktuellerWagen.getId().equals(neuerWagen.getId())) {
-          //Falls am Zug ein Wagen hängt mit der gleichen Id wie die Id vom Neuen Wagen -> IllegalArgumentException
-          throw new IllegalArgumentException("Es hängt bereits ein Wagen mit der gleichen ID am Zug");
-        }
-        aktuellerWagen = aktuellerWagen.naechsterWagen;
+        aktuellerWagen = aktuellerWagen.getNaechsterWagen();
       }
       //sonst wird an den letzten Wagen der neue rangehängt
       Wagen letzerWagen = aktuellerWagen;
       //alter Code: Wagen letzerWagen = findeVorgaengerVon(null);
-      letzerWagen.naechsterWagen = neuerWagen;
+      letzerWagen.setNaechsterWagen(neuerWagen);
     }
   }
 
@@ -43,7 +46,7 @@ public class Zug {
    *
    * @param wagen wird abgehägt
    */
-  public void abhaengen(Wagen wagen) {
+  public Wagen abhaengen(Wagen wagen) {
     if (wagen == null) {
       throw new IllegalArgumentException("Kann nicht null sein");
     }
@@ -51,18 +54,34 @@ public class Zug {
       //1. Fall: ersten Wagen abhängen
       Wagen wagenZuEntfernen = ersterWagen;
       //der Wagen, der hinter dem wagenZuEnfernen ist, wird an den Zug gehängt
-      ersterWagen = wagenZuEntfernen.naechsterWagen;
+      ersterWagen = wagenZuEntfernen.getNaechsterWagen();
       //naechsterWagen vom wagenZuEnfernen wird enfernt, da dieser keinen Nachfolger mehr hat
-      wagenZuEntfernen.naechsterWagen = null;
-
+      wagenZuEntfernen.setNaechsterWagen(null);
+      return wagenZuEntfernen;
     } else {
       //2. Fall: irgendein anderen Wagen abhängen
       Wagen vorgaengerWagen = findeVorgaengerVon(wagen);
-      Wagen wagenZuEntfernen = vorgaengerWagen.naechsterWagen;
+      Wagen wagenZuEntfernen = vorgaengerWagen.getNaechsterWagen();
       //der Wagen, der hinter dem wagenZuEnfernen ist, wird an den Zug gehängt
-      vorgaengerWagen.naechsterWagen = wagenZuEntfernen.naechsterWagen;
+      vorgaengerWagen.setNaechsterWagen(wagenZuEntfernen.getNaechsterWagen());
       //naechsterWagen vom wagenZuEnfernen wird enfernt, da dieser keinen Nachfolger mehr hat
-      wagenZuEntfernen.naechsterWagen = null;
+      wagenZuEntfernen.setNaechsterWagen(null);
+      return wagenZuEntfernen;
+    }
+  }
+
+  /**
+   * Hängt den letzen Wagen des Zuges ab.
+   */
+  public void abhaengenLetzter() {
+    if (ersterWagen == null) {
+      throw new IllegalArgumentException("Kein Wagen hängt am Zug");
+    }
+    if (ersterWagen.getNaechsterWagen() == null) {
+      ersterWagen = null;
+    } else {
+      Wagen wagenZuEntfernen = findeVorgaengerVon(null);
+      findeVorgaengerVon(wagenZuEntfernen).setNaechsterWagen(null);
     }
   }
 
@@ -81,8 +100,8 @@ public class Zug {
     }
     Wagen aktuellerWagen = ersterWagen;
     //Solange aktuellerWagen nicht der gesuchte Wagen ist, wird der nachfolger in aktuellerWagen gespeichert
-    while (aktuellerWagen.naechsterWagen != wagen) {
-      aktuellerWagen = aktuellerWagen.naechsterWagen;
+    while (aktuellerWagen.getNaechsterWagen() != wagen) {
+      aktuellerWagen = aktuellerWagen.getNaechsterWagen();
       //IllegalArgumentException, falls der Wagen nicht am Zug hängt
       if (aktuellerWagen == null) {
         throw new IllegalArgumentException("Wagen mit id = " + wagen.getId() + " hängt nicht an diesem Zug");
@@ -100,10 +119,10 @@ public class Zug {
   public Wagen findeWagenObjektMitId(String id) {
     Wagen aktuellerWagen = ersterWagen;
     while (!aktuellerWagen.getId().equalsIgnoreCase(id)) {
-      if (aktuellerWagen.naechsterWagen == null) {
+      if (aktuellerWagen.getNaechsterWagen() == null) {
         throw new IllegalArgumentException("kein Wagen mit dieser ID gefunden");
       }
-      aktuellerWagen = aktuellerWagen.naechsterWagen;
+      aktuellerWagen = aktuellerWagen.getNaechsterWagen();
     }
     return aktuellerWagen;
   }

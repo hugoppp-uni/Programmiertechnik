@@ -1,6 +1,6 @@
 package Aufgabe5;
 
-public class main {
+public class Main {
   public static void main(String[] args) {
     Zug zug = new Zug();
     zug.anhaengen(new Wagen("Wagen1"));
@@ -10,5 +10,6 @@ public class main {
     zug.anhaengen(new Wagen("Wagen5"));
     zug.abhaengen(zug.findeWagenObjektMitId("Wagen1"));
     zug.abhaengen(zug.findeWagenObjektMitId("Wagen3"));
+    zug.abhaengenLetzter();
   }
 }
