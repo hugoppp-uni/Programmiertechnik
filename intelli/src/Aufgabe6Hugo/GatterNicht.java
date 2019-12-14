@@ -3,6 +3,10 @@ package Aufgabe6Hugo;
 public class GatterNicht implements Gatter {
     private Gatter eingang;
 
+    public GatterNicht(Gatter eingang){
+        this.eingang = eingang;
+    }
+
     @Override
     public boolean getOutput() {
         return !eingang.getOutput();
@@ -10,10 +14,7 @@ public class GatterNicht implements Gatter {
 
     @Override
     public String toString() {
-        return "nicht fertig";
+        return "NICHT(" + eingang.toString() + ")";
     }
 
-    public GatterNicht(Gatter eingang){
-        this.eingang = eingang;
-    }
 }

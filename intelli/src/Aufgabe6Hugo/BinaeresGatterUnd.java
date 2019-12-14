@@ -1,13 +1,18 @@
 package Aufgabe6Hugo;
 
-public class BinaeresGatterUnd extends BinaeresGatter{
+public class BinaeresGatterUnd extends BinaeresGatter {
+
+  public BinaeresGatterUnd(Eingang wert1, Eingang wert2) {
+    super(wert1, wert2);
+  }
+
   @Override
-  public boolean getOutput(){
-  return gatter[1].getOutput() || gatter[2].getOutput();
+  public boolean getOutput() {
+    return gatter[0].getOutput() && gatter[1].getOutput();
   }
 
   @Override
   public String toString() {
-    return "noch nicht fertig";
+    return gatter[0].getOutput() + " UND " + gatter[1].getOutput();
   }
 }
