@@ -1,19 +1,19 @@
 package Aufgabe6Hugo;
 
 public class Eingang implements Gatter {
-    private boolean wert;
+  private boolean wert;
 
-    @Override
-    public boolean getOutput(){
-        return wert;
-    }
+  public Eingang(boolean wert) {
+    this.wert = wert;
+  }
 
-    @Override
-    public String toString(){
-        return "nicht fertig";
-    }
+  @Override
+  public boolean getOutput() {
+    return wert;
+  }
 
-    public Eingang(boolean wert){
-        this.wert = wert;
-    }
+  @Override
+  public String toString() {
+    return wert ? wahr : "falsch";
+  }
 }

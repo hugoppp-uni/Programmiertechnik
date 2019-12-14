@@ -12,4 +12,8 @@ public class GatterNicht implements Gatter {
     public String toString() {
         return "nicht fertig";
     }
+
+    public GatterNicht(Gatter eingang){
+        this.eingang = eingang;
+    }
 }
