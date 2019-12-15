@@ -1,9 +1,10 @@
 package Aufgabe6Justin;
 
-/**
- * EingangsWert des Gatters
- */
+
 public class Eingang implements Gatter {
+  /**
+   * EingangsWert des Gatters
+   */
   private boolean wert;
 
   public Eingang(boolean wert) {
