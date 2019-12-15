@@ -10,6 +10,9 @@ public class Main {
 
   System.out.println( new GatterNicht(new BinaeresGatterOder(w,f)).toString());
 
+  System.out.println( new BinaeresGatterOder( new GatterNicht(w), new GatterNicht(f));
+
+  System.out.println(new GatterNicht(new GatterNicht(w)));
 
   }
 }
