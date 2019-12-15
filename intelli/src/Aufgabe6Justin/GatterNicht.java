@@ -1,16 +1,19 @@
 package Aufgabe6Justin;
 
 public class GatterNicht implements Gatter {
+    public Gatter eingang;
 
-    Gatter eingang;
-
-    @Override
-    boolean getOutput() {
-
+    public GatterNicht(Gatter eingang) {
+        this.eingang = eingang;
     }
 
     @Override
-    String toString() {
+    public boolean getOutput() {
+        return !eingang.getOutput();
+    }
 
+    @Override
+    public String toString() {
+        return "NICHT(" + eingang.getOutput() + ")";
     }
 }

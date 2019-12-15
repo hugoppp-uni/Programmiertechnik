@@ -1,8 +1,7 @@
 package Aufgabe6Justin;
 
 public interface Gatter {
+    public boolean getOutput();
 
-    boolean getOutput();
-
-    String toString();
+    public String toString();
 }

@@ -1,20 +1,19 @@
 package Aufgabe6Justin;
 
 public class Eingang implements Gatter {
+    private boolean wert;
 
-    boolean wert;
-
-    boolean Eingang() {
+    public Eingang(boolean wert) {
         this.wert = wert;
     }
 
     @Override
-    boolean getOutput() {
-
+    public boolean getOutput() {
+        return wert;
     }
 
     @Override
-    String toString() {
-
+    public String toString() {
+        return wert ? "true" : "false";
     }
 }
