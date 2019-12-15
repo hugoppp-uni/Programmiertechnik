@@ -14,23 +14,7 @@ public abstract class BinaeresGatter implements Gatter {
     eingaenge[1] = eingang2;
   }
 
-  /**
-   * Getter für den Wert am Gatterausgang
-   *
-   * @throws IllegalArgumentException wenn getOutput() von BinaeresGatter aufgerufen wird
-   */
-  @Override
-  public boolean getOutput() {
-    throw new IllegalArgumentException("getOutput() kann für BinaeresGatter nicht aufgerufen werden");
-  }
+  public abstract boolean getOutput();
 
-  /**
-   * Umwandlung des Objektes in ein selbstbeschreibendes Textsegment
-   *
-   * @throws IllegalArgumentException wenn toString() von BinaeresGatter aufgerufen wird
-   */
-  @Override
-  public String toString() {
-    throw new IllegalArgumentException("toString() kann für BinaeresGatter nicht aufgerufen werden");
-  }
+  public abstract String toString();
 }
