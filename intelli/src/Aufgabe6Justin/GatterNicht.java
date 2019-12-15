@@ -14,7 +14,7 @@ public class GatterNicht implements Gatter {
 
     @Override
     public String toString() {
-        return "NICHT(" + eingang.toString() + ")";
+        return "(NICHT " + eingang.toString();
     }
 
 }

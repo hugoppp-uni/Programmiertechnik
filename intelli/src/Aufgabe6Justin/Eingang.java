@@ -14,6 +14,6 @@ public class Eingang implements Gatter {
 
     @Override
     public String toString() {
-        return wert ? "true" : "false";
+        return wert ? " WAHR " : " FALSCH ";
     }
 }
