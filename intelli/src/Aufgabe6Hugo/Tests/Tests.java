@@ -7,8 +7,6 @@ import static org.junit.jupiter.api.Assertions.*;
 public class Tests {
     Eingang f = new Eingang(false);
     Eingang w = new Eingang(true);
-    Eingang f2 = new Eingang(false);
-    Eingang w2 = new Eingang(true);
 
   @Test
   public void testeGatterNicht(){
