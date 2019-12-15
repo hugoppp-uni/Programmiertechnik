@@ -1,13 +1,13 @@
 package Aufgabe6Justin;
 
 /**
- *
+ * Eingangswert eines Gatters
  */
 public class Eingang implements Gatter {
     private boolean wert;
 
     /**
-     *
+     * Konstruktor von Eingang
      * @param wert
      */
     public Eingang(boolean wert) {
@@ -15,8 +15,9 @@ public class Eingang implements Gatter {
     }
 
     /**
+     * Getter für den Wert am Gatterausgang
      *
-     * @return
+     * @return Ausgangswert des Gatters
      */
     @Override
     public boolean getOutput() {
@@ -24,8 +25,9 @@ public class Eingang implements Gatter {
     }
 
     /**
+     * Umwandlung des Objektes in ein selbstbeschreibendes Textsegment
      *
-     * @return
+     * @return Beschreibung des Gatters
      */
     @Override
     public String toString() {

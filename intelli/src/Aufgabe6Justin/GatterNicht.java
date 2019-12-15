@@ -15,8 +15,9 @@ public class GatterNicht implements Gatter {
     }
 
     /**
+     * Getter für den Wert am Gatterausgang
      *
-     * @return
+     * @return Einganswert negiert
      */
     @Override
     public boolean getOutput() {
@@ -24,8 +25,9 @@ public class GatterNicht implements Gatter {
     }
 
     /**
+     * Umwandlung des Objektes in ein selbstbeschreibendes Textsegment
      *
-     * @return
+     * @return Beschreibung des Gatters
      */
     @Override
     public String toString() {

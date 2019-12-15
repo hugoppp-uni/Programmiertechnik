@@ -8,12 +8,18 @@ public class Tests {
     Eingang inputTrue = new Eingang(true);
     Eingang inputFalse = new Eingang(false);
 
+    /**
+     * Testet GatterNicht
+     */
     @Test
     public void testeGatterNicht() {
         assertTrue(new GatterNicht(inputFalse).getOutput());
         assertFalse(new GatterNicht(inputTrue).getOutput());
     }
 
+    /**
+     * Testet BinaeresGatterOder
+     */
     @Test
     public void testeBinaeresGatterOder() {
         assertTrue(new BinaeresGatterOder(inputFalse, inputTrue).getOutput());
@@ -23,6 +29,9 @@ public class Tests {
     }
 
 
+    /**
+     * Testet BinaeresGatterUnd
+     */
     @Test
     public void testeBinaeresGatterUnd() {
         assertFalse(new BinaeresGatterUnd(inputFalse, inputTrue).getOutput());

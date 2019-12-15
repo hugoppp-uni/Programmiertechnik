@@ -1,7 +1,7 @@
 package Aufgabe6Justin;
 
 /**
- *
+ * Gatter für eine logische UND-Verknuepfung von genau zwei Eingangswerten
  */
 public class BinaeresGatterUnd extends BinaeresGatter {
     public BinaeresGatterUnd(Gatter eingang1, Gatter eingang2) {
@@ -9,8 +9,9 @@ public class BinaeresGatterUnd extends BinaeresGatter {
     }
 
     /**
+     * Getter für den Wert am Gatterausgang
      *
-     * @return
+     * @return Ergebnis der logischen UND-Verknuepfung der beiden Eingangswerte
      */
     @Override
     public boolean getOutput() {
@@ -18,8 +19,9 @@ public class BinaeresGatterUnd extends BinaeresGatter {
     }
 
     /**
+     * Umwandlung des Objektes in ein selbstbeschreibendes Textsegment
      *
-     * @return
+     * @return Beschreibung des Gatters
      */
     @Override
     public String toString() {

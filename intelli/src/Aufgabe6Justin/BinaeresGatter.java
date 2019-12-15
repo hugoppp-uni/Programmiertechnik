@@ -1,36 +1,42 @@
 package Aufgabe6Justin;
 
 /**
- *
+ * Elternklasse für Gatter mit genau zwei Eingaengen
  */
-public class BinaeresGatter implements Gatter {
+public abstract class BinaeresGatter implements Gatter {
+    /**
+     * Eingaenge von Gattern mit genau zwei Eingaengen
+     */
     protected Gatter[] eingaenge = new Gatter[2];
 
-    /**
-     *
-     * @param eingang1
-     * @param eingang2
-     */
-    public BinaeresGatter(Gatter eingang1, Gatter eingang2) {
-        eingaenge[0] = eingang1;
-        eingaenge[1] = eingang2;
-    }
+  /**
+   * Knonstruktor von BinaeresGatter
+   *
+   * @param eingang1
+   * @param eingang2
+   */
+  public BinaeresGatter(Gatter eingang1, Gatter eingang2) {
+    eingaenge[0] = eingang1;
+    eingaenge[1] = eingang2;
+  }
 
-    /**
-     *
-     * @return
-     */
-    @Override
-    public boolean getOutput() {
-        throw new IllegalArgumentException("getOutput() kann für BinaeresGatter nicht aufgerufen werden");
-    }
+  /**
+   * Getter für den Wert am Gatterausgang
+   *
+   * @throws IllegalArgumentException wenn getOutput() von BinaeresGatter aufgerufen wird
+   */
+  @Override
+  public boolean getOutput() {
+    throw new IllegalArgumentException("getOutput() kann für BinaeresGatter nicht aufgerufen werden");
+  }
 
-    /**
-     *
-     * @return
-     */
-    @Override
-    public String toString() {
-        throw new IllegalArgumentException("toString() kann für BinaeresGatter nicht aufgerufen werden");
-    }
+  /**
+   * Umwandlung des Objektes in ein selbstbeschreibendes Textsegment
+   *
+   * @throws IllegalArgumentException wenn toString() von BinaeresGatter aufgerufen wird
+   */
+  @Override
+  public String toString() {
+    throw new IllegalArgumentException("toString() kann für BinaeresGatter nicht aufgerufen werden");
+  }
 }
