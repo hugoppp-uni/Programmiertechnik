@@ -13,6 +13,6 @@ public class BinaeresGatterUnd extends BinaeresGatter {
 
   @Override
   public String toString() {
-    return gatter[0].getOutput() + " UND " + gatter[1].getOutput();
+    return gatter[0].toString() + " UND " + gatter[1].toString();
   }
 }

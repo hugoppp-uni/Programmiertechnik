@@ -6,7 +6,9 @@ public class Main {
   Eingang f = new Eingang(false);
   Eingang w = new Eingang(true);
 
+  System.out.println( new GatterNicht(w).toString());
 
+  System.out.println( new GatterNicht(new BinaeresGatterOder(w,f)).toString());
 
 
   }
