@@ -1,6 +1,8 @@
 package Aufgabe6Justin;
 
-
+/**
+ * Gatter für unveränderten Wert des Eingangswertes
+ */
 public class Eingang implements Gatter {
   /**
    * EingangsWert des Gatters
