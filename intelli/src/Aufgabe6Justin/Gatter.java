@@ -1,6 +1,9 @@
 package Aufgabe6Justin;
 
 /**
+ * @author Hugo
+ * @author Justin
+ * @version 1.0 / Datum
  * Gatter als Interface
  */
 public interface Gatter {

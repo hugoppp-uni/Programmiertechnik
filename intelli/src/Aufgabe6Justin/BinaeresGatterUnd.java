@@ -25,6 +25,11 @@ public class BinaeresGatterUnd extends BinaeresGatter {
    */
   @Override
   public String toString() {
-    return "(" + eingaenge[0].toString() + "UND" + eingaenge[1].toString() + ")";
+    StringBuilder sb = new StringBuilder();
+    sb.append("(").append(eingaenge[0].toString());
+    sb.append("UND");
+    sb.append(eingaenge[1].toString());
+    sb.append(")");
+    return sb.toString();
   }
 }

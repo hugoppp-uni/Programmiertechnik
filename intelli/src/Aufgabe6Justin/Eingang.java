@@ -8,11 +8,12 @@ public class Eingang implements Gatter {
    * EingangsWert des Gatters
    */
   private boolean wert;
+  public static boolean WACKELKONTAKT;
 
-  private final static boolean WACKELKONTAKT = true;
 
-  public Eingang(boolean wert) {
+  public Eingang(boolean wert, boolean wk) {
     this.wert = wert;
+    this.WACKELKONTAKT = wk;
   }
 
   /**
@@ -24,7 +25,9 @@ public class Eingang implements Gatter {
   public boolean getOutput() {
     if (WACKELKONTAKT) {
       double zz = Math.random();
+      //mit Warscheinlichkeit von 1/3
       if (zz < 1.0 / 3.0) {
+        //mit Warscheinlichkeit von 1/2*1/3 wahr, bzw falsch
         return zz < 1.0 / 6.0;
       }
     }
@@ -38,6 +41,6 @@ public class Eingang implements Gatter {
    */
   @Override
   public String toString() {
-    return wert ? " WAHR " : " FALSCH ";
+    return this.getOutput() ? " WAHR " : " FALSCH ";
   }
 }

@@ -7,6 +7,9 @@ public class GatterNicht implements Gatter {
   private Gatter eingang;
 
   public GatterNicht(Gatter eingang) {
+    if (eingang == null) {
+      throw new IllegalArgumentException("Eingang darf nicht null sein");
+    }
     this.eingang = eingang;
   }
 
@@ -27,7 +30,7 @@ public class GatterNicht implements Gatter {
    */
   @Override
   public String toString() {
-    return "(NICHT " + eingang.toString();
+    return "(NICHT " + eingang.toString() + " )";
   }
 
 }
