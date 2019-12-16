@@ -25,6 +25,6 @@ public class BinaeresGatterOder extends BinaeresGatter {
    */
   @Override
   public String toString() {
-    return "(" + eingaenge[0].toString() + "ODER" + eingaenge[1].toString() + ")";
+    return "(" + eingaenge[0].toString() + " ODER " + eingaenge[1].toString() + ")";
   }
 }

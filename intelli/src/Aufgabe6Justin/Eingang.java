@@ -9,6 +9,8 @@ public class Eingang implements Gatter {
    */
   private boolean wert;
 
+  private final static boolean WACKELKONTAKT = true;
+
   public Eingang(boolean wert) {
     this.wert = wert;
   }
@@ -20,7 +22,13 @@ public class Eingang implements Gatter {
    */
   @Override
   public boolean getOutput() {
-    return wert;
+    if (WACKELKONTAKT) {
+      double zz = Math.random();
+      if (zz < 1.0 / 3.0) {
+        return zz < 1.0 / 6.0;
+      }
+    }
+      return wert;
   }
 
   /**

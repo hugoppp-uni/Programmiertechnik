@@ -40,4 +40,12 @@ public class Tests {
     assertFalse(new BinaeresGatterUnd(inputFalse, inputFalse).getOutput());
     assertTrue(new BinaeresGatterUnd(inputTrue, inputTrue).getOutput());
   }
+
+  /**
+   * Testet getOutput() aus der Klasse Eingang
+   */
+  @Test
+  public void testeGetOutput(){
+    if (Wa)
+  }
 }
