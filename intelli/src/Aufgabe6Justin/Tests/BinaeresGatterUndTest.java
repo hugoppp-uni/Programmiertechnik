@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class BinaeresGatterUndTest {
-  Eingang inputTrue = new Eingang(true, false);
-  Eingang inputFalse = new Eingang(false, false);
+  Eingang inputTrue = new Eingang(true);
+  Eingang inputFalse = new Eingang(false);
 
   /**
    * Testet BinaeresGatterUnd

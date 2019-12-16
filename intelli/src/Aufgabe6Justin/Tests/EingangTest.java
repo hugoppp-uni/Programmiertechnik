@@ -8,8 +8,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class EingangTest {
 
-  Eingang inputTrue = new Eingang(true, false);
-  Eingang inputFalse = new Eingang(false, false);
+  Eingang inputTrue = new Eingang(true);
+  Eingang inputFalse = new Eingang(false);
 
   /**
    * Testet getOutput() aus der Klasse Eingang

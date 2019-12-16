@@ -3,7 +3,7 @@ package Aufgabe6Justin;
 /**
  * @author Hugo
  * @author Justin
- * @version 1.0 / Datum
+ * @version 1.0 / 16.12.2019, abgenommen
  * Gatter als Interface
  */
 public interface Gatter {

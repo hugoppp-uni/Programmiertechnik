@@ -11,6 +11,10 @@ public class Eingang implements Gatter {
   public static boolean WACKELKONTAKT;
 
 
+  public Eingang(boolean wert) {
+    this.wert = wert;
+  }
+
   public Eingang(boolean wert, boolean wk) {
     this.wert = wert;
     this.WACKELKONTAKT = wk;
@@ -31,7 +35,7 @@ public class Eingang implements Gatter {
         return zz < 1.0 / 6.0;
       }
     }
-      return wert;
+    return wert;
   }
 
   /**
