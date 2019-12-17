@@ -1,8 +1,7 @@
 package Aufgabe7Justin;
 
 public enum Rasse{
-  HOBBIT, ELB, ZWERG, MENSCH;
-
+  MENSCH, ELB, ZWERG, HOBBIT;
 
   @Override
   public String toString(){
