@@ -24,8 +24,8 @@ public class Menge{
   /**
    * @return
    */
-  public boolean beinhaltet(Object){
-
+  public boolean beinhaltet(Object object){
+    return true;
   }
 
   /**
@@ -33,7 +33,7 @@ public class Menge{
    * @return
    */
   public Menge schneiden(Menge menge){
-
+    return menge;
   }
 
   /**
@@ -41,15 +41,14 @@ public class Menge{
    * @return
    */
   public Menge vereinigen(Menge menge){
-
+    return menge;
   }
 
   /**
-   *
    * @return
    */
   @Override
   public String toString(){
-
+    return "";
   }
 }
