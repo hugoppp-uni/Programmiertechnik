@@ -8,9 +8,46 @@ public class Menge{
   }
 
   /**
+   * Wandelt ein Objekt vom Typ Menge in einen String um
+   *
+   * @return jedes Objekt der Menge als String
+   */
+  @Override
+  public String toString(){
+    StringBuilder sb = new StringBuilder();
+    for(int i = 0; i < menge.length; i++){
+      if(menge[0] == null){
+        throw new IllegalArgumentException("Array ist leer");
+      }
+      sb.append(menge[i].toString()).append("\n");
+    }
+    return String.valueOf(sb);
+  }
+
+  /**
    * @param object
    */
   public void einfuegen(Object object){
+    if(object == null){
+      throw new IllegalArgumentException("Eingabe kann nicht null sein");
+    }
+
+    if(menge[menge.length - 1] != null){
+      Object[] copy = new Object[menge.length + 1];
+      System.arraycopy(menge, 0, copy, 0, menge.length);
+      menge = copy;
+    }
+    for(int i = 0; i < menge.length; i++){
+      if(menge[i] == null){
+        //reduziert die länge des Arrays auf Anzahl der tatsächlichen Objekte in der Menge
+        //deswegen arraycopy, sonst NullPointerException beim Aufruf von toString() von Menge
+        Object[] copy = new Object[i + 1];
+        System.arraycopy(menge, 0, copy, 0, i + 1);
+        menge = copy;
+        menge[i] = object;
+      }
+    }
+
 
   }
 
@@ -44,11 +81,4 @@ public class Menge{
     return menge;
   }
 
-  /**
-   * @return
-   */
-  @Override
-  public String toString(){
-    return "";
-  }
 }

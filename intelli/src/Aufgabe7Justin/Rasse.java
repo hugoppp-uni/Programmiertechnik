@@ -16,7 +16,7 @@ public enum Rasse{
   }
 
   /**
-   * Wandelt ein Aufzählungstyp Rasse in einen String um
+   * Wandelt einen Aufzählungstyp Rasse in einen String um
    *
    * @return die Rasse in leserlicher Schreibweise
    */
