@@ -1,6 +1,12 @@
 package Aufgabe7Justin;
 
+/**
+ * Verwaltet Elemente vom Typ Object, jedes Element ist ein Unikat
+ */
 public class Menge{
+  /**
+   * Objekte vom Typ Menge verwalten ihre Elemente in einem Array
+   */
   protected Object[] menge;
 
   public Menge(Object[] menge){
@@ -25,37 +31,53 @@ public class Menge{
   }
 
   /**
-   * @param object
+   * Fügt ein beliebieges Objekt in die Menge ein
+   *
+   * @param object das in die Menge einzufuegende Objekt vom Typ Object
+   * @throws IllegalArgumentException bei Eingabe von null
    */
   public void einfuegen(Object object){
     if(object == null){
       throw new IllegalArgumentException("Eingabe kann nicht null sein");
     }
-
+    // Erhoehen der Arraylaenge um 1, wenn Array voll ist
     if(menge[menge.length - 1] != null){
       Object[] copy = new Object[menge.length + 1];
       System.arraycopy(menge, 0, copy, 0, menge.length);
       menge = copy;
     }
+    // Durchiterieren des Arrays
     for(int i = 0; i < menge.length; i++){
+      // wenn das Objekt bereits im Array ist, wird die Vergroesserung des Arrays rueckgaengig gemacht
+      // und somit das Einfuegen gestoppt
+      if(menge[i] != null && menge[i].equals(object)){
+        Object[] copy = new Object[menge.length - 1];
+        System.arraycopy(menge, 0, copy, 0, menge.length - 1);
+        menge = copy;
+      }
+      // bei null ist das Ende des Arrays, wo das neue Objekt eingefuegt wird
       if(menge[i] == null){
-        //reduziert die länge des Arrays auf Anzahl der tatsächlichen Objekte in der Menge
-        //deswegen arraycopy, sonst NullPointerException beim Aufruf von toString() von Menge
+        // reduziert die Laenge des Arrays auf die Anzahl der tatsächlichen Objekte in der Menge,
+        // um potentiellen Nullpointern vorzubeugen
         Object[] copy = new Object[i + 1];
         System.arraycopy(menge, 0, copy, 0, i + 1);
         menge = copy;
         menge[i] = object;
       }
     }
-
-
   }
 
   /**
-   * @param object
+   * Fügt eine beliebiege Anzahl an Objekten in die Menge ein
+   *
+   * @param objects das in die Menge einzufuegende Objekt vom Typ Object
+   * @throws IllegalArgumentException bei Eingabe von null
    */
-  public void einfuegen(Object... object){
-
+  public void einfuegen(Object... objects){
+    // einfuegen() wird per Iteration fuer jedes Objekt in der Eingabe durchgefuehrt
+    for(int x = 0; x < objects.length; x++){
+      einfuegen(objects[x]);
+    }
   }
 
   /**

@@ -8,10 +8,8 @@ public class App{
     TolkienFigur figur4 = new TolkienFigur("Frodo", Rasse.HOBBIT);
 
     Menge gemeinschaft = new Menge(new Object[1]);
-    gemeinschaft.einfuegen(figur1);
-    gemeinschaft.einfuegen(figur2);
-    gemeinschaft.einfuegen(figur3);
-    gemeinschaft.einfuegen(figur2);
+    gemeinschaft.einfuegen(figur1, figur2, figur3, figur2, figur1, figur2);
+
 
     System.out.println(gemeinschaft.toString());
   }
