@@ -6,13 +6,14 @@ public class Menge {
 
   /**
    * Fügt das objekt in de Menge ein, falls das Objekt bereits vorhanden ist -> IllegalArgumentException
+   *
    * @param objekt Das einzufügende Objekt
    */
   public void einfuegen(Object objekt) {
     if (beinhaltet(objekt)) {
       throw new IllegalArgumentException("einfuegen(): Objekt bereits in Menge vorhanden.");
     }
-    if (anzMenge == menge.length){
+    if (anzMenge == menge.length) {
       arrayVerdoppeln();
     }
     menge[anzMenge] = objekt;
@@ -20,10 +21,11 @@ public class Menge {
 
   /**
    * Überladene Version von einfuegen, fügt beliebig viele Objekte in die Menge ein
+   *
    * @param objekte einzügende Objekte
    */
-  public void einfuegen(Object ... objekte){
-    for (Object objekt : objekte){
+  public void einfuegen(Object... objekte) {
+    for (Object objekt : objekte) {
       einfuegen(objekt);
     }
   }
@@ -42,6 +44,39 @@ public class Menge {
     }
     return false;
   }
+
+  /**
+   * Bildet den Schnitt zweier Mengen
+   * @param menge1 erste Menge
+   * @return Schnitt beider Mengen
+   */
+  public Menge schnitt(Menge menge1) {
+    Menge schnitt = new Menge();
+    for (Object element1 : menge1.menge) {
+      for (Object element2 : this.menge) {
+        if (element1 == element2) {
+          schnitt.einfuegen(element1);
+        }
+      }
+    }
+    return schnitt;
+  }
+
+  /**
+   * Bildet die Vereinigung zweier Mengen
+   * @param andereMenge erste Menge
+   * @return Vereinigte Menge
+   */
+  public Menge vereinigung(Menge andereMenge) {
+    Menge vereinigung = new Menge();
+    for (Object element1 : andereMenge.menge) {
+      for (Object element2 : this.menge) {
+        vereinigung.einfuegen(element1);
+      }
+    }
+    return vereinigung;
+  }
+
 
   //Hilfsmethoden//
 
