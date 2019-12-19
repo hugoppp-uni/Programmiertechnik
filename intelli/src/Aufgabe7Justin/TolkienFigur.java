@@ -37,14 +37,13 @@ public class TolkienFigur{
    */
   @Override
   public boolean equals(Object object){
-    if(!(object instanceof TolkienFigur)){
-      return false;
-    }
-    TolkienFigur andereFigur = (TolkienFigur)object;
-    return (this.RASSE.equals(andereFigur.RASSE)) &&
-      (this.NAME.equals(andereFigur.NAME));
+      if(!(object instanceof TolkienFigur)){
+        return false;
+      }
+      TolkienFigur andereFigur = (TolkienFigur)object;
+      return (this.RASSE.equals(andereFigur.RASSE)) &&
+        (this.NAME.equals(andereFigur.NAME));
   }
-
   @Override
   public int hashCode(){
     return 0;

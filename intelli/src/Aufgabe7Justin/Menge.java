@@ -31,7 +31,25 @@ public class Menge{
   }
 
   /**
+   * Entfernen der Null-Werte aus einem Array vom Typ Object
+   *
+   * @param object Array vom Typ Object
+   * @return getrimmtes Array vom Typ Object
+   */
+  public Object[] trimArray(Object[] object){
+    for(int i = 0; i < object.length; i++){
+      if(object[i] == null){
+        Object[] copy = new Object[i];
+        System.arraycopy(object, 0, copy, 0, copy.length);
+        object = copy;
+      }
+    }
+    return object;
+  }
+
+  /**
    * Fügt ein beliebieges Objekt in die Menge ein
+   * Duplikate werden ignoriert
    *
    * @param object das in die Menge einzufuegende Objekt vom Typ Object
    * @throws IllegalArgumentException bei Eingabe von null
@@ -69,6 +87,7 @@ public class Menge{
 
   /**
    * Fügt eine beliebiege Anzahl an Objekten in die Menge ein
+   * Duplikate werden ignoriert
    *
    * @param objects das in die Menge einzufuegende Objekt vom Typ Object
    * @throws IllegalArgumentException bei Eingabe von null
@@ -81,26 +100,71 @@ public class Menge{
   }
 
   /**
-   * @return
+   * Prueft, ob ein Objekt in der Menge ist
+   *
+   * @return wahrheitswert
    */
   public boolean beinhaltet(Object object){
-    return true;
+    boolean wahrheitswert = false;
+    for(int i = 0; i < menge.length; i++){
+      if(menge[i].equals(object)){
+        wahrheitswert = true;
+      }
+    }
+    return wahrheitswert;
   }
 
   /**
-   * @param menge
-   * @return
+   * Erzeugt ein neues Objekte, welches die Vereinigungsmenge zweier Mengen darstellt
+   * Duplikate werden ignoriert
+   *
+   * @param menge2 Menge mit der vereinigt werden soll
+   * @return neues Objekt vom Typ Menge, welches die Vereinigungsmenge ist
    */
-  public Menge schneiden(Menge menge){
-    return menge;
+  public Menge vereinigen(Menge menge2){
+    // Erstellen einer Kopie, die beide Mengen erstmal nur zusammenfügt
+    Object[] copy = new Object[menge.length + menge2.menge.length];
+    System.arraycopy(menge, 0, copy, 0, menge.length);
+    System.arraycopy(menge2.menge, 0, copy, menge.length, menge2.menge.length);
+    // Entfernen der Duplikate im Array
+    for(int i = 0; i < copy.length; i++){
+      for(int j = i + 1; j < copy.length; j++){
+        if(copy[i] != null && copy[i].equals(copy[j])){
+          Object[] copy2 = new Object[copy.length + 1];
+          System.arraycopy(copy, 0, copy2, 0, copy.length);
+          copy[j] = copy2[j + 1];
+        }
+      }
+    }
+    // Erzeugen eines neuen Objektes
+    Menge vereinigung = new Menge(trimArray(copy));
+    return vereinigung;
   }
 
   /**
-   * @param menge
-   * @return
+   * Erzeugt ein neues Objekte, welches die Schnittmenge zweier Mengen darstellt
+   *
+   * @param menge2 Menge mit der geschnitten werden soll
+   * @return neues Objekt vom Typ Menge, welches die Schnittmenge ist
    */
-  public Menge vereinigen(Menge menge){
-    return menge;
+  public Menge schneiden(Menge menge2){
+    // Erstellen einer Kopie, die beide Mengen erstmal nur zusammenfügt
+    Object[] copy = new Object[menge.length + menge2.menge.length];
+    System.arraycopy(menge, 0, copy, 0, menge.length);
+    System.arraycopy(menge2.menge, 0, copy, menge.length, menge2.menge.length);
+    // Schreiben der Array-Duplikate in eine Kopie
+    Object[] copy2 = new Object[menge.length + menge2.menge.length];
+    int index = 0;
+    for(int i = 0; i < copy.length; i++){
+      for(int j = i + 1; j < copy.length; j++){
+        if(copy[i] != null && copy[i].equals(copy[j])){
+          copy2[index] = copy[i];
+          index++;
+        }
+      }
+    }
+    // Erzeugen eines neuen Objektes
+    Menge schnitt = new Menge(trimArray(copy2));
+    return schnitt;
   }
-
 }

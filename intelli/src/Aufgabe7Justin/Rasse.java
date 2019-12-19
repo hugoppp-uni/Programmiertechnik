@@ -9,6 +9,9 @@ public enum Rasse{
   ZWERG("Zwerg"),
   HOBBIT("Hobbit");
 
+  /**
+   * Jede Konstante von Rasse wird durch eine Objektvariable vom Typ String repraesentiert
+   */
   private String rasse;
 
   private Rasse(String rasse){
