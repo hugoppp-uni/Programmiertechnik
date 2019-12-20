@@ -13,6 +13,7 @@ public class TolkienFigur {
 
   @Override
   public String toString() {
-    return this.name + " ist ein " + this.rasse.toString();
+    StringBuilder sb = new StringBuilder(this.name);
+    return sb.append(" (").append(rasse.toString()).append(")").toString();
   }
 }

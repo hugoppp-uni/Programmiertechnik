@@ -77,6 +77,19 @@ public class Menge {
     return vereinigung;
   }
 
+  /**
+   * gibt alle Elemente der Menge als String aus
+   * @return Selbstbeschreibung der Menge
+   */
+  @Override
+  public String toString(){
+    StringBuilder sb = new StringBuilder();
+    for (Object element : menge) {
+      sb.append(element.toString()).append(" ");
+    }
+    return sb.toString();
+  }
+
 
   //Hilfsmethoden//
 
