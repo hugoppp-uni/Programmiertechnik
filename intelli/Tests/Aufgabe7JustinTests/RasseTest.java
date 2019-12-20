@@ -1,6 +1,7 @@
 package Aufgabe7JustinTests;
 
 import Aufgabe7Justin.Rasse;
+import Aufgabe7Justin.TolkienFigur;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -10,6 +11,8 @@ class RasseTest{
 
   @BeforeEach
   void setUp(){
+    TolkienFigur testfigur = new TolkienFigur("Gandalf", Rasse.ZAUBERER);
+
   }
 
   @Test

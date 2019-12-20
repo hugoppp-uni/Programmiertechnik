@@ -7,7 +7,8 @@ public enum Rasse{
   MENSCH("Mensch"),
   ELB("Elb"),
   ZWERG("Zwerg"),
-  HOBBIT("Hobbit");
+  HOBBIT("Hobbit"),
+  ZAUBERER("Zauberer");
 
   /**
    * Jede Konstante von Rasse wird durch eine Objektvariable vom Typ String repraesentiert

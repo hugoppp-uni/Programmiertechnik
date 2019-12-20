@@ -11,7 +11,7 @@ class TolkienFigurTest{
 
   @BeforeEach
   void setUp(){
-    TolkienFigur testfigur = new TolkienFigur("Gandalf", Rasse.MENSCH);
+    TolkienFigur testfigur = new TolkienFigur("Gandalf", Rasse.ZAUBERER);
   }
 
   @Test
