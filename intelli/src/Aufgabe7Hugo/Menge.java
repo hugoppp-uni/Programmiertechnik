@@ -94,7 +94,7 @@ public class Menge {
   //Hilfsmethoden//
 
   /**
-   * Verdoppelt die größe des Arrays menge
+   * Verdoppelt die Größe des Arrays menge
    */
   private void arrayVerdoppeln() {
     Object[] neuesArray = new Object[menge.length * 2];
