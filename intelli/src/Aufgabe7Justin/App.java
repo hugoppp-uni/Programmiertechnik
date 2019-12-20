@@ -19,6 +19,10 @@ public class App{
     gemeinschaft1.einfuegen(figur1, figur2, figur3);
     gemeinschaft2.einfuegen(figur3, figur4);
 
+    System.out.println(gemeinschaft1.beinhaltet(figur2));
+    System.out.println(gemeinschaft2.beinhaltet(figur3));
+    System.out.println(gemeinschaft2.beinhaltet(figur1));
+
 
     Menge gemeinschaft1und2 = new Menge(gemeinschaft1.vereinigen(gemeinschaft2).menge);
     System.out.println(gemeinschaft1und2.toString());

@@ -17,15 +17,17 @@ public class Menge{
    * Wandelt ein Objekt vom Typ Menge in einen String um
    *
    * @return jedes Objekt der Menge als String
+   * @exception IllegalArgumentException wenn Array leer ist
    */
   @Override
   public String toString(){
     StringBuilder sb = new StringBuilder();
-    for(int i = 0; i < menge.length; i++){
+    for(Object element: menge){
+    //for(int i = 0; i < menge.length; i++){
       if(menge[0] == null){
         throw new IllegalArgumentException("Array ist leer");
       }
-      sb.append(menge[i].toString()).append("\n");
+      sb.append(/*menge[i]*/element.toString()).append("\n");
     }
     return String.valueOf(sb);
   }
@@ -33,18 +35,18 @@ public class Menge{
   /**
    * Entfernen der Null-Werte aus einem Array vom Typ Object
    *
-   * @param object Array vom Typ Object
+   * @param objects Array vom Typ Object
    * @return getrimmtes Array vom Typ Object
    */
-  public Object[] trimArray(Object[] object){
-    for(int i = 0; i < object.length; i++){
-      if(object[i] == null){
+  public Object[] trimMenge(Object[] objects){
+    for(int i = 0; i < objects.length; i++){
+      if(objects[i] == null){
         Object[] copy = new Object[i];
-        System.arraycopy(object, 0, copy, 0, copy.length);
-        object = copy;
+        System.arraycopy(objects, 0, copy, 0, copy.length);
+        objects = copy;
       }
     }
-    return object;
+    return objects;
   }
 
   /**
@@ -137,7 +139,7 @@ public class Menge{
       }
     }
     // Erzeugen eines neuen Objektes
-    Menge vereinigung = new Menge(trimArray(copy));
+    Menge vereinigung = new Menge(trimMenge(copy));
     return vereinigung;
   }
 
@@ -164,7 +166,7 @@ public class Menge{
       }
     }
     // Erzeugen eines neuen Objektes
-    Menge schnitt = new Menge(trimArray(copy2));
+    Menge schnitt = new Menge(trimMenge(copy2));
     return schnitt;
   }
 }
