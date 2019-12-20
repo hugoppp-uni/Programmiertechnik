@@ -29,7 +29,17 @@ public class TolkienFigur{
   }
 
   /**
-   * Führt einen inhaltlichen Vergleich mit einem Objekt vom
+   * Gibt den Hashcode von TolkienFigur zurueck
+   *
+   * @return Hashcode
+   */
+  @Override
+  public int hashCode(){
+    return NAME.hashCode() * RASSE.hashCode();
+  }
+
+  /**
+   * Fuehrt einen inhaltlichen Vergleich mit einem Objekt vom
    * Typ TolkienFigur und einem anderen Objekt durch
    *
    * @param object beliebiges Vergleichsobjekt
@@ -37,17 +47,18 @@ public class TolkienFigur{
    */
   @Override
   public boolean equals(Object object){
+    boolean wahrheitswert = false;
+    if(hashCode() == object.hashCode()){
       if(!(object instanceof TolkienFigur)){
-        return false;
+        return wahrheitswert;
       }
       TolkienFigur andereFigur = (TolkienFigur)object;
-      return (this.RASSE.equals(andereFigur.RASSE)) &&
+      wahrheitswert = (this.RASSE.equals(andereFigur.RASSE)) &&
         (this.NAME.equals(andereFigur.NAME));
-  }
-  @Override
-  public int hashCode(){
-    return 0;
+    }
+    return wahrheitswert;
   }
 }
+
 
 

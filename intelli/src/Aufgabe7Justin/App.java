@@ -1,5 +1,7 @@
 package Aufgabe7Justin;
 
+//TODO Tests
+
 /**
  * @author Hugo
  * @author Justin
@@ -14,11 +16,14 @@ public class App{
 
     Menge gemeinschaft1 = new Menge(new Object[1]);
     Menge gemeinschaft2 = new Menge(new Object[1]);
-    gemeinschaft1.einfuegen(figur1, figur2);
+    gemeinschaft1.einfuegen(figur1, figur2, figur3);
     gemeinschaft2.einfuegen(figur3, figur4);
 
-    System.out.println(gemeinschaft1.vereinigen(gemeinschaft2).toString());
-    System.out.println(gemeinschaft1.schneiden(gemeinschaft2).toString());
+
+    Menge gemeinschaft1und2 = new Menge(gemeinschaft1.vereinigen(gemeinschaft2).menge);
+    System.out.println(gemeinschaft1und2.toString());
+    Menge gemeinschaft1schnitt2 = new Menge(gemeinschaft1.schneiden(gemeinschaft2).menge);
+    System.out.println(gemeinschaft1schnitt2.toString());
 
 
   }
