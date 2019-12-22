@@ -9,6 +9,18 @@ import static org.junit.jupiter.api.Assertions.*;
 public class MengeTest {
 
   @Test
+  public void testeBeinhaltet(){
+    Menge menge = new Menge();
+    menge.einfuegen("1");
+    assertTrue(menge.beinhaltet("1"));
+    //testet, ob im Fall der Verdopplung alles richtig abläuft
+    for (int i = 0; i < 50; i++) {
+      menge.einfuegen(i);
+      assertTrue(menge.beinhaltet(i));
+    }
+  }
+
+  @Test
   public void testeEinfuegen() {
     Menge menge1 = new Menge();
 
@@ -25,10 +37,18 @@ public class MengeTest {
     }
 
     assertEquals(3, menge1.getAnzElemente());
-
     assertTrue(menge1.beinhaltet("1"));
     assertTrue(menge1.beinhaltet("2"));
     assertTrue(menge1.beinhaltet("3"));
+
+    menge1.einfuegen("4", "5");
+
+    assertEquals(5, menge1.getAnzElemente());
+    assertTrue(menge1.beinhaltet("1"));
+    assertTrue(menge1.beinhaltet("2"));
+    assertTrue(menge1.beinhaltet("3"));
+    assertTrue(menge1.beinhaltet("4"));
+    assertTrue(menge1.beinhaltet("5"));
   }
 
   @Test

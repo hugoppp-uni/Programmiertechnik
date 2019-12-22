@@ -15,7 +15,7 @@ public class TolkienFigur {
    */
   @Override
   public String toString() {
-    return String.format("Tolkien Figur: %s (Rasse: %s) ",this.name,rasse.toString());
+    return String.format("Tolkien Figur: %s (Rasse: %s)",this.name,rasse.toString());
   }
 
   /**

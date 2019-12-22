@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class TolkienFigurTest {
   @Test
-  public void testeEquals(){
+  public void testeEquals() {
 
     TolkienFigur elb = new TolkienFigur("Elb", Rasse.ELB);
 
@@ -21,5 +21,11 @@ public class TolkienFigurTest {
     assertNotEquals(elb, elbAndererName);
     assertNotEquals(elb, elbAndereRase);
     assertNotEquals(elb, zwerg);
-}
+  }
+
+  @Test
+  public void testeToString() {
+    assertEquals(new TolkienFigur("Elb", Rasse.ELB).toString(), "Tolkien Figur: Elb (Rasse: Elb)");
+  }
+  //TODO testeHashCode() ???
 }
