@@ -14,8 +14,8 @@ public class Menge {
    * @param objekt Das einzufügende Objekt
    */
   public void einfuegen(Object objekt) {
-    if (objekt == null){
-      throw  new IllegalArgumentException("einfuegen(): Kann 'null' nicht einfügen");
+    if (objekt == null) {
+      throw new IllegalArgumentException("einfuegen(): Kann 'null' nicht einfügen");
     }
     if (beinhaltet(objekt)) {
       throw new IllegalArgumentException("einfuegen(): Objekt bereits in Menge vorhanden.");
@@ -55,6 +55,7 @@ public class Menge {
 
   /**
    * Bildet den Schnitt zweier Mengen
+   *
    * @param andereMenge Menge, mit der der Schnitt gebildet wird
    * @return Schnitt beider Mengen
    */
@@ -80,14 +81,16 @@ public class Menge {
 
   /**
    * Bildet die Vereinigung zweier Mengen
-   * @param andereMenge erste Menge
+   *
+   * @param andereMenge Menge, mit der die Vereinigung gebildet werden soll
    * @return Vereinigte Menge
    */
   public Menge vereinigung(Menge andereMenge) {
-    Menge vereinigung = new Menge();
-    for (Object element1 : andereMenge.menge) {
-      for (Object element2 : this.menge) {
-        vereinigung.einfuegen(element1);
+    Menge vereinigung = this;
+    for (Object element : andereMenge.menge) {
+      try {
+        vereinigung.einfuegen(element);
+      } catch (IllegalArgumentException e) {
       }
     }
     return vereinigung;
@@ -95,10 +98,11 @@ public class Menge {
 
   /**
    * gibt alle Elemente der Menge als String aus
+   *
    * @return Selbstbeschreibung der Menge
    */
   @Override
-  public String toString(){
+  public String toString() {
     StringBuilder sb = new StringBuilder("----- Diese Menge enthält -----\n");
     for (Object element : menge) {
       if (element == null) {
