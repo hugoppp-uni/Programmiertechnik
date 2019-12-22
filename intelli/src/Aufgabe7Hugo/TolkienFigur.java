@@ -11,33 +11,36 @@ public class TolkienFigur {
 
   /**
    * Beschreibung der Figur durch Name und Rasse
+   *
    * @return Beschreibung der Figur
    */
   @Override
   public String toString() {
-    return String.format("Tolkien Figur: %s (Rasse: %s)",this.name,rasse.toString());
+    return String.format("Tolkien Figur: %s (Rasse: %s)", this.name, rasse.toString());
   }
 
   /**
    * Equals Methode
+   *
    * @param object zu vergleichendes Objekt
-   * @return  true wenn Name und Rasse übereinstimmen
+   * @return true wenn Name und Rasse übereinstimmen
    */
   @Override
   public boolean equals(Object object) {
     if (!(object instanceof TolkienFigur)) {
       return false;
     }
-    TolkienFigur andereFigur = (TolkienFigur)object;
+    TolkienFigur andereFigur = (TolkienFigur) object;
     return this.name == andereFigur.name && this.rasse == andereFigur.rasse;
   }
 
   /**
    * hashcode Methode
+   *
    * @return
    */
   @Override
-  public int hashCode(){
+  public int hashCode() {
     return this.name.hashCode() + this.rasse.hashCode();
   }
 }

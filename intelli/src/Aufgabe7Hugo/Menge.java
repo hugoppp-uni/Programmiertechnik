@@ -17,7 +17,7 @@ public class Menge {
     if (objekt == null) {
       throw new IllegalArgumentException("einfuegen(): Kann 'null' nicht einfügen");
     }
-    if (beinhaltet(objekt)) {
+    if (this.beinhaltet(objekt)) {
       throw new IllegalArgumentException("einfuegen(): Objekt bereits in Menge vorhanden.");
     }
     if (anzElemente == menge.length) {
@@ -61,17 +61,19 @@ public class Menge {
    */
   public Menge schnitt(Menge andereMenge) {
     Menge schnitt = new Menge();
-    for (Object element1 : andereMenge.menge) {
-      if (element1 == null) {
+    for (Object elementAndererMenge : andereMenge.menge) {
+      if (elementAndererMenge == null) {
         break;
       }
-      for (Object element2 : this.menge) {
-        if (element2 == null) {
+      for (Object elementDieserMenge : this.menge) {
+        if (elementDieserMenge == null) {
           break;
         }
-        if (element1.equals(element2)) {
-          schnitt.einfuegen(element1);
-          //element1 == element2, daher muss man diese nicht weiter vergleichen
+        if (elementAndererMenge.hashCode() != elementDieserMenge.hashCode()) {
+          break;
+        }
+        if (elementAndererMenge.equals(elementDieserMenge)) {
+          schnitt.einfuegen(elementAndererMenge);
           break;
         }
       }
@@ -88,6 +90,9 @@ public class Menge {
   public Menge vereinigung(Menge andereMenge) {
     Menge vereinigung = this;
     for (Object element : andereMenge.menge) {
+      if (element == null) {
+        break;
+      }
       try {
         vereinigung.einfuegen(element);
       } catch (IllegalArgumentException e) {

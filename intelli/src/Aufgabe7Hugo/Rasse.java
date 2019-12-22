@@ -13,7 +13,7 @@ public enum Rasse {
   }
 
   @Override
-  public String toString(){
+  public String toString() {
     return rasse;
   }
 }

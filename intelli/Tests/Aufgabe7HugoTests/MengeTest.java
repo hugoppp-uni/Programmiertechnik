@@ -1,7 +1,6 @@
 package Aufgabe7HugoTests;
 
 import Aufgabe7Hugo.*;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -9,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class MengeTest {
 
   @Test
-  public void testeBeinhaltet(){
+  public void testeBeinhaltet() {
     Menge menge = new Menge();
     menge.einfuegen("1");
     assertTrue(menge.beinhaltet("1"));
@@ -52,7 +51,7 @@ public class MengeTest {
   }
 
   @Test
-  public void testeSchnitt(){
+  public void testeSchnitt() {
     Menge menge1 = new Menge();
     Menge menge2 = new Menge();
 
