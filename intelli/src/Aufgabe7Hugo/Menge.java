@@ -1,22 +1,30 @@
 package Aufgabe7Hugo;
 
 public class Menge {
-  Object[] menge = new Object[10];
-  int anzMenge = 0;
+  private Object[] menge = new Object[10];
+  private int anzElemente = 0;
+
+  public int getAnzElemente() {
+    return anzElemente;
+  }
 
   /**
-   * Fügt das objekt in de Menge ein, falls das Objekt bereits vorhanden ist -> IllegalArgumentException
+   * Fügt das objekt in die Menge ein, falls das Objekt bereits vorhanden ist -> IllegalArgumentException
    *
    * @param objekt Das einzufügende Objekt
    */
   public void einfuegen(Object objekt) {
+    if (objekt == null){
+      throw  new IllegalArgumentException("einfuegen(): Kann 'null' nicht einfügen");
+    }
     if (beinhaltet(objekt)) {
       throw new IllegalArgumentException("einfuegen(): Objekt bereits in Menge vorhanden.");
     }
-    if (anzMenge == menge.length) {
+    if (anzElemente == menge.length) {
       arrayVerdoppeln();
     }
-    menge[anzMenge] = objekt;
+    menge[anzElemente] = objekt;
+    anzElemente++;
   }
 
   /**
@@ -47,15 +55,23 @@ public class Menge {
 
   /**
    * Bildet den Schnitt zweier Mengen
-   * @param menge1 erste Menge
+   * @param andereMenge Menge, mit der der Schnitt gebildet wird
    * @return Schnitt beider Mengen
    */
-  public Menge schnitt(Menge menge1) {
+  public Menge schnitt(Menge andereMenge) {
     Menge schnitt = new Menge();
-    for (Object element1 : menge1.menge) {
+    for (Object element1 : andereMenge.menge) {
+      if (element1 == null) {
+        break;
+      }
       for (Object element2 : this.menge) {
-        if (element1 == element2) {
+        if (element2 == null) {
+          break;
+        }
+        if (element1.equals(element2)) {
           schnitt.einfuegen(element1);
+          //element1 == element2, daher muss man diese nicht weiter vergleichen
+          break;
         }
       }
     }
@@ -83,13 +99,15 @@ public class Menge {
    */
   @Override
   public String toString(){
-    StringBuilder sb = new StringBuilder();
+    StringBuilder sb = new StringBuilder("----- Diese Menge enthält -----\n");
     for (Object element : menge) {
-      sb.append(element.toString()).append(" ");
+      if (element == null) {
+        break;
+      }
+      sb.append(element.toString()).append("\n");
     }
     return sb.toString();
   }
-
 
   //Hilfsmethoden//
 

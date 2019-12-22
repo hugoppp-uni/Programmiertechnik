@@ -15,8 +15,7 @@ public class TolkienFigur {
    */
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder(this.name);
-    return sb.append(" (").append(rasse.toString()).append(")").toString();
+    return String.format("Tolkien Figur: %s (Rasse: %s) ",this.name,rasse.toString());
   }
 
   /**

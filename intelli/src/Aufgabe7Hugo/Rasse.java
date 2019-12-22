@@ -12,5 +12,8 @@ public enum Rasse {
     this.rasse = rasse;
   }
 
-
+  @Override
+  public String toString(){
+    return rasse;
+  }
 }
