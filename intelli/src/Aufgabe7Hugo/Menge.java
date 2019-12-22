@@ -45,8 +45,8 @@ public class Menge {
    * @return "true" falls vorhanden, "false" falls nicht vorhanden
    */
   public boolean beinhaltet(Object objekt) {
-    for (int i = 0; i < menge.length; i++) {
-      if (menge[i] == objekt) {
+    for (Object o : menge) {
+      if (o == objekt) {
         return true;
       }
     }
@@ -95,7 +95,7 @@ public class Menge {
       }
       try {
         vereinigung.einfuegen(element);
-      } catch (IllegalArgumentException e) {
+      } catch (IllegalArgumentException ignored) {
       }
     }
     return vereinigung;

@@ -8,10 +8,10 @@ public enum Rasse {
 
   private String rasse;
 
-  private Rasse(String rasse) {
+  Rasse(String rasse) {
     this.rasse = rasse;
   }
-
+ 
   @Override
   public String toString() {
     return rasse;

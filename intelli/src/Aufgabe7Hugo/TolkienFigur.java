@@ -31,13 +31,13 @@ public class TolkienFigur {
       return false;
     }
     TolkienFigur andereFigur = (TolkienFigur) object;
-    return this.name == andereFigur.name && this.rasse == andereFigur.rasse;
+    return this.name.equals(andereFigur.name) && this.rasse.equals(andereFigur.rasse);
   }
 
   /**
    * hashcode Methode
    *
-   * @return
+   * @return hashcode
    */
   @Override
   public int hashCode() {
