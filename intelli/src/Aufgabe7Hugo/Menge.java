@@ -41,13 +41,18 @@ public class Menge {
   /**
    * Prüft ob das Objekt bereits in der Menge enthalten ist
    *
-   * @param objekt Das zu prüfende Element
+   * @param andersObjekt Das zu prüfende Element
    * @return "true" falls vorhanden, "false" falls nicht vorhanden
    */
-  public boolean beinhaltet(Object objekt) {
-    for (Object o : menge) {
-      if (o == objekt) {
-        return true;
+  public boolean beinhaltet(Object andersObjekt) {
+    for (Object diesesObjekt : menge) {
+      if (diesesObjekt == null) {
+        return false;
+      }
+      if (diesesObjekt.hashCode() == andersObjekt.hashCode()) {
+        if (diesesObjekt.equals(andersObjekt)) {
+          return true;
+        }
       }
     }
     return false;
@@ -65,17 +70,8 @@ public class Menge {
       if (elementAndererMenge == null) {
         break;
       }
-      for (Object elementDieserMenge : this.menge) {
-        if (elementDieserMenge == null) {
-          break;
-        }
-        if (elementAndererMenge.hashCode() != elementDieserMenge.hashCode()) {
-          break;
-        }
-        if (elementAndererMenge.equals(elementDieserMenge)) {
-          schnitt.einfuegen(elementAndererMenge);
-          break;
-        }
+      if (this.beinhaltet(elementAndererMenge)) {
+        schnitt.einfuegen(elementAndererMenge);
       }
     }
     return schnitt;
