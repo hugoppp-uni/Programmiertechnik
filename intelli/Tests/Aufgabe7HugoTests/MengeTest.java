@@ -31,6 +31,7 @@ public class MengeTest {
     try {
       menge1.einfuegen("3");
       fail("es wurde keine Exception geworfen");
+      //oder besser assertTrue(false); ?
     } catch (IllegalArgumentException exception) {
       assertTrue(true);
     }
@@ -89,5 +90,4 @@ public class MengeTest {
     assertTrue(vereinigung.beinhaltet("3"));
     assertTrue(vereinigung.beinhaltet("4"));
   }
-
 }

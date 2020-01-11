@@ -13,6 +13,7 @@ public class Menge {
    *
    * @param objekt Das einzufügende Objekt
    */
+
   public void einfuegen(Object objekt) {
     if (objekt == null) {
       throw new IllegalArgumentException("einfuegen(): Kann 'null' nicht einfügen");
@@ -21,8 +22,27 @@ public class Menge {
       throw new IllegalArgumentException("einfuegen(): Objekt bereits in Menge vorhanden.");
     }
     if (anzElemente == menge.length) {
-      arrayVerdoppeln();
+      arrayMengeVerdoppeln();
     }
+    menge[anzElemente] = objekt;
+    anzElemente++;
+  }
+
+  /**
+   * Wie einfuegen(), jedoch wird das Array immer um genau einen Platz vergrößert.
+   * TODO Wird nicht genutzt, nur für den Fall dass verdoppeln des arrays nicht ok ist.
+   * TODO Kann einfuegen() problemlos ersetzen
+   *
+   * @param objekt Das einzufüegende Objekt
+   */
+  public void einfuegenOhneVerdoppeln(Object objekt) {
+    if (objekt == null) {
+      throw new IllegalArgumentException("einfuegen(): Kann 'null' nicht einfügen");
+    }
+    if (this.beinhaltet(objekt)) {
+      throw new IllegalArgumentException("einfuegen(): Objekt bereits in Menge vorhanden.");
+    }
+    arrayMengeUmEinsVerlaengern();
     menge[anzElemente] = objekt;
     anzElemente++;
   }
@@ -32,6 +52,7 @@ public class Menge {
    *
    * @param objekte einzügende Objekte
    */
+
   public void einfuegen(Object... objekte) {
     for (Object objekt : objekte) {
       einfuegen(objekt);
@@ -119,8 +140,17 @@ public class Menge {
   /**
    * Verdoppelt die Größe des Arrays menge
    */
-  private void arrayVerdoppeln() {
+  private void arrayMengeVerdoppeln() {
     Object[] neuesArray = new Object[menge.length * 2];
+    System.arraycopy(menge, 0, neuesArray, 0, menge.length);
+    menge = neuesArray;
+  }
+
+  /**
+   * Erhöht die Größe des Arrays menge um einen Platz
+   */
+  private void arrayMengeUmEinsVerlaengern() {
+    Object[] neuesArray = new Object[menge.length + 1];
     System.arraycopy(menge, 0, neuesArray, 0, menge.length);
     menge = neuesArray;
   }
