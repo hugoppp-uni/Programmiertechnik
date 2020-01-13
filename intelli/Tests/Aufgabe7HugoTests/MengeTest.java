@@ -12,11 +12,7 @@ public class MengeTest {
     Menge menge = new Menge();
     menge.einfuegen("1");
     assertTrue(menge.beinhaltet("1"));
-    //testet, ob im Fall der Verdopplung alles richtig abläuft
-    for (int i = 0; i < 50; i++) {
-      menge.einfuegen(i);
-      assertTrue(menge.beinhaltet(i));
-    }
+    //TODO im fall von nicht beinhaltet testen, ob return = false
   }
 
   @Test
@@ -27,21 +23,13 @@ public class MengeTest {
     menge1.einfuegen("2");
     menge1.einfuegen("3");
     assertEquals(3, menge1.getAnzElemente());
-    //testet, ob eine Exception geworfen wird, wenn das Element bereits existiert
-    try {
-      menge1.einfuegen("3");
-      fail("es wurde keine Exception geworfen");
-      //oder besser assertTrue(false); ?
-    } catch (IllegalArgumentException exception) {
-      assertTrue(true);
-    }
 
     assertEquals(3, menge1.getAnzElemente());
     assertTrue(menge1.beinhaltet("1"));
     assertTrue(menge1.beinhaltet("2"));
     assertTrue(menge1.beinhaltet("3"));
 
-    menge1.einfuegen("4", "5");
+    menge1.einfuegen("4", "5", "3");
 
     assertEquals(5, menge1.getAnzElemente());
     assertTrue(menge1.beinhaltet("1"));
@@ -69,10 +57,16 @@ public class MengeTest {
     assertFalse(schnitt.beinhaltet("3"));
     assertFalse(schnitt.beinhaltet("4"));
     assertTrue(schnitt.beinhaltet("1"));
+    try {
+      Menge schnitt2 = menge1.schnitt(null);
+      fail("Exception wurde nicht geworfen");
+    } catch (IllegalArgumentException ignored) {
+      assertTrue(true);
+    }
   }
 
   @Test
-  public void testeVereinigun() {
+  public void testeVereinigung() {
     Menge menge1 = new Menge();
     Menge menge2 = new Menge();
 
@@ -89,5 +83,25 @@ public class MengeTest {
     assertTrue(vereinigung.beinhaltet("2"));
     assertTrue(vereinigung.beinhaltet("3"));
     assertTrue(vereinigung.beinhaltet("4"));
+  }
+
+
+  @Test
+  void abziehenTest() {
+    Menge menge1 = new Menge();
+    Menge menge2 = new Menge();
+
+    menge1.einfuegen("1");
+    menge1.einfuegen("2");
+    menge1.einfuegen("3");
+
+    menge2.einfuegen("1");
+    menge2.einfuegen("4");
+
+    Menge differenz = menge1.abziehen(menge2);
+    assertTrue(differenz.beinhaltet("2"));
+    assertTrue(differenz.beinhaltet("3"));
+    assertFalse(differenz.beinhaltet("1"));
+    assertFalse(differenz.beinhaltet("4"));
   }
 }
